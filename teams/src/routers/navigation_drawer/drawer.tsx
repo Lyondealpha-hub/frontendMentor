@@ -57,7 +57,7 @@ const NavigationDrawer = ({ drawerComponents }: props) => {
                     revealMode={'expand'}
                     animationEnabled={true}
                     render={() =>
-                        <div style={{ height: 'calc(100vh - 40px)', }} className='w-full shadow-2xl border-r-4 pt-2 px-0.5'>
+                        <div style={{ height: 'calc(100vh - 45px)', }} className='w-full shadow-2xl border-r-4 pt-2 px-0.5'>
                             <Toolbar id="toolbar" className='bg-slate-500  sticky flex items-center justify-center caret-gray-800 mb-2  '>
                                 
                                     <Item
