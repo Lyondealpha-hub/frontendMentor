@@ -4,16 +4,24 @@
 import { ReactNode } from "react";
 
 export interface LocationStates {
-    "/Dashboard": {},
+    "/dashboard"?: {};
+    "/teams"?: {};
+    "/developers"?: {};
+    "/management/attendance"?: {};
 
 }
+
+// Navigation Drawer Interface
+export interface componentInterface{
+    drawer_component ?: React.ReactNode
+  }
 
 export type PathName = keyof LocationStates;
 
 export interface Page {
     path: PathName;
     exact?: boolean;
-    component: ReactNode | any |JSX.Element ,
-    userPage?: any,
+    component: any ;
+    userPage?: any;
     selected?: String,
 }

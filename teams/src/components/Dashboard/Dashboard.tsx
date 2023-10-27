@@ -1,6 +1,7 @@
 import React from 'react'
 
-const Dashboard = () => {
+export const Dashboard = () => {
+
   return (
     <main className="h-full  flex items-center justify-center mx-7">
         <div className="main-content flex flex-row justify-between">
@@ -19,6 +20,5 @@ const Dashboard = () => {
         </div>
       </main>
   )
-}
+};
 
-export default Dashboard
