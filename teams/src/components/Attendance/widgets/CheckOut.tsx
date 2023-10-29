@@ -2,6 +2,7 @@ import { Form } from 'antd'
 import React from 'react'
 import { InputsTemplate } from '../../../templates/inputsTemplate'
 import { ImageUploader } from '../../../templates/imageUploader'
+import { SaveButton } from '../../accesserios/buttons'
 
 export const CheckOut = () => {
     return (
@@ -12,24 +13,29 @@ export const CheckOut = () => {
                 className=''
                 layout={"horizontal"}
                 size={"small"}
-                labelCol={{span:3}}
-                // wrapperCol={{span:3}}
-                
+                labelCol={{ span: 3 }}
+            // wrapperCol={{span:3}}
+
             >
                 <section>
                     <InputsTemplate
                         InputType={'string'}
                         label='Name'
                         placeholder={''}
-                        itemChange={()=>{}}
+                        itemChange={() => { }}
                         disabled
-                        
-                    />
-
-                    <ImageUploader 
-                        label='Image'
 
                     />
+
+                    <Form.Item className='' label={<p className=''>{"Image"}</p>}>
+                        <div className='w-full h-[180px] flex border-2 justify-center items-center'>
+                            <p className='flex h-full justify-center items-center'>No Image</p>
+                        </div>
+
+                        <div className='w-full my-1 flex justify-end'>
+                            <SaveButton handleSave={() => { }} btnName={'Update'} />
+                        </div>
+                    </Form.Item>
                 </section>
 
             </Form>
