@@ -7,7 +7,7 @@ import { Form } from 'antd'
 export const CheckIn = () => {
   return (
     <div className='w-full px-2'>
-        <p className='pt-1 border-[1px] border-b-0 px-2 w-full bg-slate-100 font-semibold my-2'>{"NSS Personnel Check-Out Form"}</p>
+        <p className='pt-1 border-[1px] border-b-0 px-2 w-full bg-slate-100 font-semibold my-2'>{"NSS Personnel Check-In Form"}</p>
             <Form
                 name="check-out"
                 className=''
