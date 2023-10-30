@@ -2,7 +2,7 @@ import { Form, Input } from 'antd'
 import React, { useState } from 'react'
 
 interface props {
-    label ?: string
+    label?: string
     InputType?: string,
     itemChange?: (e: any) => void
     placeholder?: string
@@ -12,8 +12,8 @@ interface props {
 export const InputsTemplate = ({ label, InputType, placeholder, disabled = true, itemChange }: props) => {
     const [value, setValue] = useState<string | number>();
     return (
-        <div className=''>
-            <Form.Item label={<p>{label}</p>}>
+        <div className='w-full'>
+            <Form.Item className='my-1' label={<p>{label}</p>}>
                 <Input
                     size={"middle"}
                     type={InputType}
