@@ -3,7 +3,6 @@ import { CheckIn } from './widgets/CheckIn'
 import { CheckOut } from './widgets/CheckOut'
 import { DatagridTemplate } from '../../templates/datagridTemplate'
 import { attendance_cols } from './data/datagrid_cols'
-import Webcam from 'react-webcam'
 
 export const Attendance = () => {
 
@@ -11,12 +10,12 @@ export const Attendance = () => {
         <div className='w-full h-full'>
             <div className=' w-full h-full'>
                 {/* form */}
-                <div className='w-full h-1/2 flex justify-between p-2 space-x-2'>
+                <div className='w-full flex justify-between p-2 space-x-2'>
                     <div className='w-1/2 border-[1px] '>
                         <CheckIn />
                     </div>
 
-                    <div className=' w-1/2 h-full border-[1px]'>
+                    <div className=' w-1/2  border-[1px]'>
                         <CheckOut />
                     </div>
 

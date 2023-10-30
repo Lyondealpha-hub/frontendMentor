@@ -3,7 +3,7 @@ import camera from '../../../assets/camera.png'
 import { ImageUploader } from '../../../templates/imageUploader'
 import { InputsTemplate } from '../../../templates/inputsTemplate'
 import { Checkbox, Form } from 'antd'
-import { SaveButton } from '../../accesserios/buttons'
+import { CamButton, CaptureButton, SaveButton } from '../../accesserios/buttons'
 import Webcam from 'react-webcam'
 import { CheckboxTemplate } from '../../../templates/checkboxTemplate'
 
@@ -31,14 +31,14 @@ export const CheckIn = () => {
 
 
     return (
-        <div className='w-full px-2'>
+        <div className='w-full h-full px-2'>
             <p className='pt-1 border-[1px] border-b-0 px-2 w-full bg-slate-100 font-semibold my-2'>{"NSS Personnel Check-In Form"}</p>
             <Form
                 name="check-in"
                 className='w-full h-full'
                 layout={"horizontal"}
                 size={"small"}
-                labelCol={{ span: 6 }}
+                labelCol={{ span: 4 }}
             // wrapperCol={{span:3}}
 
             >
@@ -58,7 +58,7 @@ export const CheckIn = () => {
                             <div className='flex justify-between space-x-3'>
                                 {isCam ?
                                     <>
-                                        <div className='w-1/2'>
+                                        <div className='w-1/2 '>
                                             <Webcam
                                                 audio={false}
                                                 height={220}
@@ -75,17 +75,17 @@ export const CheckIn = () => {
                                     </>
                                     :
                                     <>
-                                        <div className='w-1/2 h-[180px] bg-slate-300 border-2 rounded'>
+                                        <div style={{height: 220}} className='w-1/2  bg-slate-300 border-2 rounded'>
 
-                                            <div className='flex-col h-full py-10 justify-center items-center'>
-                                                <span className='flex justify-center items-center'><img src={camera} alt='capture camera' /></span>
-                                                <p className='flex justify-center items-center'>Click "ON" to <span className=' underline '>  Turn on Camera</span></p>
+                                            <div  className='flex-col h-full py-16 justify-center items-center'>
+                                                <span className='flex  justify-center items-center'><img src={camera} alt='capture camera' /></span>
+                                                <p className='w-full flex  justify-center items-center'>Click "ON" to <span className=' underline '>  Turn on Camera</span></p>
                                             </div>
 
                                         </div>
                                     </>
                                 }
-                                <div className='w-1/2 h-[180px] border-2 rounded'>
+                                <div style={{height: 220}} className='w-1/2  border-2 rounded'>
                                     {Image === "" ?
                                         <>
                                             <p className='flex h-full justify-center items-center'>No Image</p>
@@ -108,8 +108,8 @@ export const CheckIn = () => {
                     <div className='w-full flex  justify-between'>
                         <div className='w-1/2 space-x-1 '>
                             <Checkbox className='border-[1px] px-1 rounded' />
-                            <SaveButton handleSave={() => { setIsCam(!isCam) }} btnName={isCam == true ? "OFF" : "ON"} />
-                            {isCam == true && <SaveButton handleSave={capture} btnName={'Capture'} />}
+                            <CamButton cam={() => { setIsCam(!isCam) }} btnName={isCam == true ? "OFF" : "ON"} />
+                            {isCam == true && <CaptureButton handleCapture={capture} btnName={'Capture'} />}
                         </div>
                         <div className='w-1/2 flex justify-end'>
                             <SaveButton handleSave={() => { }} btnName={'Save'} />
