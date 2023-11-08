@@ -32,7 +32,7 @@ const DrawerContent = React.forwardRef(({ active }: { active?: any }, ref,) => {
             searchEnabled={true}
             activeStateEnabled={true}
             searchExpr={searchExpr}
-            onItemClick={(e:any)=>{ }}
+            onItemClick={(e:any)=>{ e.itemData.route && navigate(e.itemData.route); }}
             >
                 <SearchEditorOptions
                     placeholder="Type search value here..."
@@ -46,7 +46,9 @@ const DrawerContent = React.forwardRef(({ active }: { active?: any }, ref,) => {
 export default DrawerContent;
 
 export const DrawerIcons = ({drawerToggler}:IconsProps) => {
-
+    const handle_item_click = (e: any) => {
+        drawerToggler(e);
+    }
 
     return (
         <>
@@ -63,7 +65,7 @@ export const DrawerIcons = ({drawerToggler}:IconsProps) => {
                         keyExpr="ID"
                         displayExpr="name"
                         parentIdExpr="categoryId"
-                        // onItemClick={(e:any)=> handle_item_click(e.node.key)}
+                        onItemClick={(e:any)=> handle_item_click(e.node.key)}
                         
                     >
                         <SearchEditorOptions

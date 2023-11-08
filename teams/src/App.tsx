@@ -1,12 +1,13 @@
-
-import 'devextreme/dist/css/dx.light.css';
-import MyRoutes from './routers';
+// import 'devextreme/dist/css/dx.light.css';
+import { CardTemplates } from './templates/cardTemplates';
+// import MyRoutes from './routers';
 
 
 const App = () => {
   return (
     <div className="w-full h-full">
-      <MyRoutes />
+      {/* <MyRoutes /> */}
+      <CardTemplates/>
     </div>
   )
 }

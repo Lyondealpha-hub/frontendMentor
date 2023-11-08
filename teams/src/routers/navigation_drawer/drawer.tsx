@@ -1,16 +1,19 @@
 import { Drawer } from 'devextreme-react/drawer'
 import Toolbar, { Item } from 'devextreme-react/toolbar';
-import React, { ReactNode, useMemo, useRef, useState } from 'react'
+import React, { ReactElement, ReactNode, useMemo, useRef, useState } from 'react'
 import DrawerContent, { DrawerIcons } from './widgets/drawerItems';
-import "devextreme/dist/css/dx.light.css";
+
 import { ScrollView } from 'devextreme-react';
 import { Tooltip } from 'antd';
+import "devextreme/dist/css/dx.light.css";
 
-interface props {
-    drawerComponents : ReactNode | any | JSX.Element;
+
+interface props{
+    drawer_components: any;
 }
 
-const NavigationDrawer = ({ drawerComponents }: props) => {
+
+const NavigationDrawer = ({ drawer_components }:props) => {
     //main
     const [isOpened, setState] = useState<boolean>(false);
     //expand expand mode
@@ -48,24 +51,21 @@ const NavigationDrawer = ({ drawerComponents }: props) => {
 
     return (
         <div style={{ height: 'calc(94vh)' }} className="drawerContents w-full h-full bg-white  duration-100">
-            {
+            
                 <Drawer
                     minSize={75}
                     maxSize={280}
-                    className=" mt-3"
+                    className="mt-3"
                     opened={isOpened}
                     revealMode={'expand'}
                     animationEnabled={true}
                     render={() =>
-                        <div style={{ height: 'calc(100vh - 45px)', }} className='w-full shadow-2xl border-r-4 pt-2 px-0.5'>
+                        <div style={{ height: 'calc(100vh - 45px)', }} className='w-full shadow-2xl  border-r-4 pt-2 px-0.5'>
                             <Toolbar id="toolbar" className='bg-slate-500  sticky flex items-center justify-center caret-gray-800 mb-2  '>
-                                
-                                    <Item
-                                        
+                                    <Item  
                                         widget="dxButton"
                                         options={buttonOptions}
-                                        location={isOpened ? 'before' : 'after'}
-
+                                        location={isOpened ? 'before' : 'center'}
                                     />
                                 
 
@@ -75,14 +75,12 @@ const NavigationDrawer = ({ drawerComponents }: props) => {
                                     </Item>
                                 )}
 
-
-
                             </Toolbar>
 
                             <ScrollView
                                 showScrollbar={"always"}
                             >
-                                <div>
+                                <div >
                                     {isOpened && <DrawerContent ref={drawerRef} />}
                                     {!isOpened && <DrawerIcons drawerToggler={openDrawer} />}
                                 </div>
@@ -91,12 +89,10 @@ const NavigationDrawer = ({ drawerComponents }: props) => {
                     }
                 >
                     {/* page content */}
-                    <div className="w-full h-full duration-100">
-                        {drawerComponents}
-                    </div>
+                    <div className='w-full h-full'>{drawer_components}</div>
 
                 </Drawer>
-            }
+            
         </div>
     )
 }
