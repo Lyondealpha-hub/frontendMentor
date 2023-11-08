@@ -1,16 +1,14 @@
-
-import 'devextreme/dist/css/dx.light.css';
-import MyRoutes from './routers';
-
-
+import { Boards } from "./templates/Boards";
+import "devextreme/dist/css/dx.light.css";
+// import MyRoutes from './routers';
 
 const App = () => {
   return (
-    <div className="w-full h-full">
-      <MyRoutes />
-
+    <div className="w-full h-full bg-gray-300 p-5">
+      {/* <MyRoutes /> */}
+      <Boards />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
