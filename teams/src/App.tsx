@@ -7,7 +7,6 @@ const App = () => {
   return (
     <div className="w-full h-full">
       <MyRoutes />
-      
     </div>
   )
 }
