@@ -1,15 +1,18 @@
 import { Card } from "antd";
-import { EllipsisOutlined, PlusCircleOutlined } from "@ant-design/icons";
+import { PlusCircleOutlined } from "@ant-design/icons";
 
-export const Boards = ({ title, children }: any) => {
+export const Boards = ({ title, children, headerColor }: any) => {
   return (
     <>
       <div className="justify-center">
         <Card
-          title={title}
+          title={`${title}`}
           bordered={false}
-          style={{ width: 300, height: 500 }}
-          extra={<PlusCircleOutlined style={{cursor:'pointer'}}/>}
+          headStyle={{ backgroundColor: `${headerColor}` }}
+          style={{ width: 300, height: 500, backgroundColor: "gray" }}
+          extra={
+            <PlusCircleOutlined style={{ cursor: "pointer", color: "white" }} />
+          }
         >
           {children}
         </Card>
