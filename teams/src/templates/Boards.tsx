@@ -1,7 +1,16 @@
 import { Card } from "antd";
 import { PlusCircleOutlined } from "@ant-design/icons";
 
-export const Boards = ({ title, children, headerColor }: any) => {
+interface props {
+  title: string;
+  headerColor: string;
+}
+
+export const Boards: React.FC<props> = ({
+  title,
+  children,
+  headerColor,
+}: any) => {
   return (
     <>
       <div className="justify-center">
