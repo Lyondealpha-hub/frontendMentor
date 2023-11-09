@@ -54,16 +54,6 @@ const App: React.FC = ({
     setIsModalOpen(false);
   };
 
-  // const [title, setTitle] = useState('');
-
-  // useEffect(() => {
-  //   document.title = title;
-  // }, [title]);
-
-  // function handleClick() {
-  //   setTitle('New Title');
-  // }
-
   return (
     <>
       <Button
