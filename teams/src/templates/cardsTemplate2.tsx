@@ -15,6 +15,7 @@ export const Cards: React.FC = () => {
   return(
     <Card
       style={{ width: 300 }}
+      extra={<a href="#">More</a>}
       actions={[
         // <div onClick={() => setShowTreeTemplate(true)}>
           // <EllipsisOutlined key="ellipsis" />

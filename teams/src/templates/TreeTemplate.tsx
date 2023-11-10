@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { DownOutlined, PlusCircleOutlined } from "@ant-design/icons";
+import {PlusCircleOutlined } from "@ant-design/icons";
 import { Tree } from "antd";
 import type { DataNode, TreeProps } from "antd/es/tree";
 import InputTemplate from "./InputTemplate";
 import Datepicker from "./Datepicker";
 import tree from "../assets/hierarchical-structure.png";
-import { Width } from "devextreme-react/chart";
 
 const App: React.FC = () => {
   const onSelect: TreeProps["onSelect"] = (selectedKeys, info) => {
@@ -13,8 +12,9 @@ const App: React.FC = () => {
   };
 
   const [TreeDataState, setTreeDataState] = useState<number>(0);
-
-  let treeData: DataNode[] = [
+  const [display, setDisplay] = useState(true);
+  const [inputValue, setInputValue] = useState(''); // New state for input value
+  const [treeData, setTreeData] = useState<DataNode[]>([
     {
       title: TreeDataState,
       key: "0-0",
@@ -24,33 +24,35 @@ const App: React.FC = () => {
             <div>
               <InputTemplate />
               <Datepicker />
+              {display ? <div>Task 1</div> : <div>Task 2</div>}
             </div>
           ),
           key: "0-0-0",
         },
-
-        {
-          title: (
-            <div>
-              <InputTemplate />
-              <Datepicker />
-            </div>
-          ),
-          key: "0-0-2",
-          // children: [
-          //   {
-          //     title: 'leaf',
-          //     key: '0-0-2-0',
-          //   },
-          //   {
-          //     title: 'leaf',
-          //     key: '0-0-2-1',
-          //   },
-          // ],
-        },
       ],
     },
-  ];
+  ]);
+
+  const addInput = () => {
+    const newTreeData = [...treeData];
+    newTreeData[0].children?.push({
+      title: (
+        <div>
+          <InputTemplate />
+        </div>
+      ),
+      key: `0-0-${newTreeData[0].children.length}`,
+    });
+    setTreeData(newTreeData);
+  };
+
+  const handleInputSubmit = (event: { key: string; }) => { // New handler for input submit
+    if (event.key === 'Enter') {
+      const newTreeData = [...treeData];
+      newTreeData[0].title = inputValue;
+      setTreeData(newTreeData);
+    }
+  }
 
   useEffect(() => {
     setTreeDataState(treeData.length + 1);
@@ -58,9 +60,13 @@ const App: React.FC = () => {
 
   return (
     <div style={{width: 300}} className="flex justify-end items-start ">
+      <input 
+        value={inputValue} 
+        onChange={(e) => setInputValue(e.target.value)} 
+        onKeyDown={handleInputSubmit} // Attach the new handler
+      />
       <li className="ml-7">
-        {" "}
-        <PlusCircleOutlined  style={{fontSize:"150%"}}/>
+        <PlusCircleOutlined onClick={addInput} style={{fontSize:"150%"}}/>
       </li>
       <li className=" ">
         <Tree
@@ -69,8 +75,7 @@ const App: React.FC = () => {
           defaultExpandedKeys={["0-0-0"]}
           onSelect={onSelect}
           treeData={treeData}
-        //   style={{ paddingLeft: "150px" }}
-        className="px-3"
+          className="px-3"
         />
       </li>
     </div>
