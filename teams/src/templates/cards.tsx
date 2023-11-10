@@ -67,7 +67,7 @@ export const Cards: React.FC<props> = () => {
     <>
       <Card
         bordered={false}
-        style={{ width:250,margin:"10px" }}
+        style={{ width:250,marginTop:40,marginRight:'20%', zIndex:"" }}
         actions={[
           <Tree
           showLine

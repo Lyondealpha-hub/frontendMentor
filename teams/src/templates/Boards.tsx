@@ -22,6 +22,7 @@ export const Boards = ({ title, headerColor, data }: props) => {
             backgroundColor: `${headerColor}`,
             position: "fixed",
             width: 300,
+            zIndex:"5"
           }}
           // bodyStyle={{overflow: "auto", }}
           style={{
