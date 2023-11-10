@@ -1,23 +1,31 @@
 import React, { useState } from "react";
-import { Button, Modal, Form, Input, Avatar, List } from "antd";
+import { Button, Modal, Form, Input, Avatar, List, Tooltip } from "antd";
 
 const data = [
   {id:'0',
-    title: 'Ant Design Title 1',
-    img: `https://xsgames.co/randomusers/avatar.php?g=pixel&key=${1}`  },
+    title: '',
+    img: `https://xsgames.co/randomusers/avatar.php?g=pixel&key=${1}`,
+  description: ''  },
   {id:'1',
-    title: 'Ant Design Title 2',
-    img: `https://xsgames.co/randomusers/avatar.php?g=pixel&key=${1}`
-  },
+    title: '',
+    img: `https://xsgames.co/randomusers/avatar.php?g=pixel&key=${2}`,
+    description: '' },
   {id:'2',
-    title: 'Ant Design Title 3',
-    img: `https://xsgames.co/randomusers/avatar.php?g=pixel&key=${1}`
-  },
+    title: '',
+    img: `https://xsgames.co/randomusers/avatar.php?g=pixel&key=${3}`,
+    description: '' },
   {id:'3',
-    title: 'Ant Design Title 4',
-    img: `https://xsgames.co/randomusers/avatar.php?g=pixel&key=${1}`
-  },
+    title: '',
+    img: `https://xsgames.co/randomusers/avatar.php?g=pixel&key=${4}`,
+    description: '' },
 ];
+
+// interface listprops {
+//   id: string;
+//   title?: string;
+//   img?: string;
+//   description?: string;
+// }
 interface props {
   label?: string;
   InputType?: string;
@@ -27,6 +35,9 @@ interface props {
   isMultiple?: boolean;
   isList?: boolean;
   multipleInputs?: any[];
+   title?: string;
+   img?: string;
+   description?: string;
 }
 
 const App: React.FC = ({
@@ -38,6 +49,9 @@ const App: React.FC = ({
   isMultiple = false,
   multipleInputs,
   isList = true,
+   title,
+   img,
+   description
 }: props) => {
   const [value, setValue] = useState<string | number>();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -64,7 +78,7 @@ const App: React.FC = ({
         Open Modal
       </Button>
       <Modal
-        title="Modal Title"
+        title={title}
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
@@ -82,12 +96,14 @@ const App: React.FC = ({
                   <List.Item>
                     <List.Item.Meta
                       avatar={
-                        <Avatar
-                          src={`https://xsgames.co/randomusers/avatar.php?g=pixel&key=${index}`}
+                        <Tooltip title="Hey" style={{backgroundColor: "blue", color: "white"}}>                      
+                          <Avatar
+                          src={item.img}
                         />
+                        </Tooltip>
                       }
-                      title={<a href="https://ant.design">{item.title}</a>}
-                      description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+                      title={item.title}
+                      description={item.description}
                     />
                   </List.Item>
                 )}
