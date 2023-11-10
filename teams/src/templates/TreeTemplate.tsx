@@ -13,7 +13,7 @@ const App: React.FC = () => {
 
   const [TreeDataState, setTreeDataState] = useState<number>(0);
   const [display, setDisplay] = useState(true);
-  const [inputValue, setInputValue] = useState(''); // New state for input value
+  const [inputValue, setInputValue] = useState('');
   const [treeData, setTreeData] = useState<DataNode[]>([
     {
       title: TreeDataState,
@@ -46,7 +46,7 @@ const App: React.FC = () => {
     setTreeData(newTreeData);
   };
 
-  const handleInputSubmit = (event: { key: string; }) => { // New handler for input submit
+  const handleInputSubmit = (event: { key: string; }) => {
     if (event.key === 'Enter') {
       const newTreeData = [...treeData];
       newTreeData[0].title = inputValue;
@@ -63,7 +63,7 @@ const App: React.FC = () => {
       <input 
         value={inputValue} 
         onChange={(e) => setInputValue(e.target.value)} 
-        onKeyDown={handleInputSubmit} // Attach the new handler
+        onKeyDown={handleInputSubmit}
       />
       <li className="ml-7">
         <PlusCircleOutlined onClick={addInput} style={{fontSize:"150%"}}/>
