@@ -1,7 +1,9 @@
-import { Card } from "antd";
+import { Card, Tooltip } from "antd";
 import plus from "../assets/plus.png";
 import { useState } from "react";
 import { Cards } from "./cards";
+import { HoverStyle } from "devextreme-react/chart";
+
 interface props {
   title: string;
   headerColor: string;
@@ -22,7 +24,7 @@ export const Boards = ({ title, headerColor, data }: props) => {
             backgroundColor: `${headerColor}`,
             position: "fixed",
             width: 300,
-            zIndex:"5"
+            zIndex: "5",
           }}
           // bodyStyle={{overflow: "auto", }}
           style={{
@@ -30,31 +32,28 @@ export const Boards = ({ title, headerColor, data }: props) => {
             height: 500,
             backgroundColor: "gray",
             overflow: "auto",
+            scrollbarWidth: "none",
           }}
           extra={
-            <img
-              src={plus}
-              alt=""
-              className="text-white"
-              style={{ color: "white", cursor: "pointer" }}
-              onClick={async (e: any) => {
-                title && setContainer([...container, <Cards />]);
-              }}
-            />
+            <Tooltip title="Add new task" color="lime">
+              <img
+                src={plus}
+                alt=""
+                className="text-white"
+                style={{ cursor: "pointer"}}
+                onClick={async (e: any) => {
+                  title && setContainer([...container, <Cards />]);
+                }}
+                
+              />
+            </Tooltip>
           }
         >
           {/* <div className="absolute"> */}
-            {container.map((item: any, index: number) => {
-              console.log("item", item);
-              return (
-                // <div className="bg-blue-200 mt-10" key={index}>
-                <>
-                  {item}
-                </>
-                // </div>
-              );
-            })}
-          {/* </div> */}
+          {container.map((item: any, index: number) => {
+            console.log("item", item);
+            return <div key={index}>{item}</div>;
+          })}
         </Card>
       </div>
     </>
