@@ -1,24 +1,15 @@
-// import 'devextreme/dist/css/dx.light.css';
-import MyRoutes from "./routers";
-import { CardS } from "./templates/Card";
-import { CardTemplates } from "./templates/cardTemplates";
-// import MyRoutes from './routers';
+
+import "devextreme/dist/css/dx.light.css";
+// import { Main } from "./components/Devs/developer";
+// import { Cards } from "./templates/cards";
+import MyRoutes from './routers';
+import {Cards} from './templates/cardsTemplate2';
 
 const App = () => {
   return (
-     <div>
-      <MyRoutes /> 
-     </div>
-    // <div className="w-full flex justify-between ">
-    //   {/* left container */}
-    //   <div className="w-[100%] px-10 py-10">
-    //     <CardTemplates title={"frontend dev"} content={"hiiii"} />
-    //   </div>
-    //   {/* right container  */}
-    //   <div className="w-[30%] px-10 py-5  ">
-    //     <CardS/>
-    //   </div>
-    // </div>
+    <div className="w-full h-full bg-gray-300 p-5">
+      <MyRoutes />
+    </div>
   );
 };
 
