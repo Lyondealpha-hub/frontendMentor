@@ -78,7 +78,8 @@ const App: React.FC = () => {
   }, [treeData]);
 
   return (
-    <div style={{ width: 300 }} className="flex justify- mt-3 items-start ">
+    // 300
+    <div style={{ width: "auto" }} className="flex justify- mt-3 items-start ">
       {/* <input
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}

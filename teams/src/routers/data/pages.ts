@@ -3,6 +3,7 @@ import { Page } from "./types";
 import { Dashboard } from "../../components/Dashboard/Dashboard";
 import { Attendance } from "../../components/Attendance/Attendance";
 import { Login } from "../../components/Login/Login";
+import { Developers } from "../../components/Devs/developer";
 
 export const pages: Page[] = [
   {
@@ -15,7 +16,7 @@ export const pages: Page[] = [
   {
     path: "/developers",
     exact: true,
-    component: Dashboard,
+    component: Developers,
     selected: "Developers",
   },
   {

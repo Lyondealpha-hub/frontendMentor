@@ -5,12 +5,14 @@ import { Card, Input } from "antd";
 
 const { Meta } = Card;
 
+
 export const Cards: React.FC = () => {
   const [showTreeTemplate, setShowTreeTemplate] = useState(false);
 
   return(
     <Card
-      style={{ width: 350, justifyContent: "center", alignItems: "center", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)" }}
+    // 350
+      style={{ width: "auto", justifyContent: "center", alignItems: "center", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)"}}
       actions={[
         <div onClick={() => setShowTreeTemplate(!showTreeTemplate)}>
           <EllipsisOutlined key="ellipsis" />

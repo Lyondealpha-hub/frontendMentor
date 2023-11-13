@@ -1,19 +1,12 @@
-// import { Boards } from "./templates/Boards";
-import "devextreme/dist/css/dx.light.css";
-// import { Main } from "./components/Devs/developer";
-// import { Cards } from "./templates/cards";
-import MyRoutes from './routers';
-import {Cards} from './templates/cardsTemplate2';
 
+import "devextreme/dist/css/dx.light.css";
+import MyRoutes from './routers';
 const App = () => {
   return (
-    <div className="w-full h-full bg-gray-300 p-5">
+    <div className="w-full h-full bg-gray-300 ">
       <MyRoutes />
-
-        {/* {/* <Boards /> */}
-        {/* <Cards/>  */}
-   {/* <Main/> */}
     </div>
+   
   );
 };
 
