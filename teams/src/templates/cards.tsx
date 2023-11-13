@@ -8,34 +8,59 @@ import tree from "../assets/hierarchical-structure.png";
 
 interface props {}
 
-const treeData: DataNode[] = [
-  {
-    title: "parent 1",
-    key: "0-0",
-    children: [
+// const treeData: DataNode[] = [
+//   {
+//     title: "parent 1",
+//     key: "0-0",
+//     children: [
+//       {
+//         title: <textarea />,
+//         key: "0-0-0",
+//         children: [],
+//       },
+//       {
+//         title: <input type="text" placeholder=" + add sub-item" />,
+//         key: "0-0-1",
+//         children: [],
+//       },
+//     ],
+//   },
+// ];
+export const Cards: React.FC<props> = () => {
+  // const [enterInput, setEnterInput] = useState<boolean>();
+  // const [addInput, setAddInput] = useState<boolean>();
+  // const [count, setCount] = useState<number>(0);
+
+  const [treeData, setTreeData] = useState<DataNode[]>([
+    {
+      title: "parent 1",
+      key: "0-0",
+      children: [
+        {
+          title: <textarea />,
+          key: "0-0-0",
+          children: [],
+        },
+        {
+          title: <input type="text" placeholder=" + add sub-item" />,
+          key: "0-0-1",
+          children: [],
+        },
+      ],
+    },
+  ]);
+
+  const onSelect: TreeProps["onSelect"] = (selectedKeys, info) => {
+    console.log("selected", selectedKeys, info);
+    setTreeData([
+      // ...treeData[0].,
       {
         title: <textarea />,
         key: "0-0-0",
         children: [],
       },
-      {
-        title: <input type="text" placeholder=" + add sub-item" />,
-        key: "0-0-1",
-        children: [],
-      },
-    ],
-  },
-];
-export const Cards: React.FC<props> = () => {
-  const [subItems, setSubItems] = useState<any>(treeData[0].children);
-  const [enterInput, setEnterInput] = useState<boolean>();
-  const [addInput, setAddInput] = useState<boolean>();
-  const [count, setCount] = useState<number>(0);
-  // const []
-  const onSelect: TreeProps["onSelect"] = (selectedKeys, info) => {
-    console.log("selected", selectedKeys, info);
+    ]);
   };
-  console.log(subItems);
 
   return (
     <>
