@@ -8,11 +8,11 @@ const App = () => {
     /* <MyRoutes /> */
     <div className="w-full flex justify-between ">
       {/* left container */}
-      <div className="w-[70%]">
-        <CardTemplates title={"TAsks"} content={"hiiii"} />
+      <div className="w-[100%] px-10 py-10">
+        <CardTemplates title={"frontend dev"} content={"hiiii"} />
       </div>
       {/* right container  */}
-      <div className="w-[30%] ">
+      <div className="w-[30%] px-10 py-5  ">
         <CardS/>
       </div>
     </div>
