@@ -1,13 +1,13 @@
 // import 'devextreme/dist/css/dx.light.css';
 import MyRoutes from "./routers";
-import { CardS } from "./templates/Card";
-import { CardTemplates } from "./templates/cardTemplates";
+// import { CardS } from "./templates/Card";
+// import { CardTemplates } from "./templates/cardTemplates";
 // import MyRoutes from './routers';
 
 const App = () => {
   return (
      <div>
-      <MyRoutes /> 
+      <MyRoutes />
      </div>
     // <div className="w-full flex justify-between ">
     //   {/* left container */}
