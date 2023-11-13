@@ -1,7 +1,7 @@
 import { Card, Tooltip } from "antd";
 import plus from "../assets/plus.png";
 import { useState } from "react";
-import { Cards } from "./cards";
+import { Cards } from "./cardsTemplate2";
 // import { HoverStyle } from "devextreme-react/chart";
 
 interface props {
@@ -23,12 +23,12 @@ export const Boards = ({ title, headerColor, data }: props) => {
           headStyle={{
             backgroundColor: `${headerColor}`,
             position: "fixed",
-            width: 300,
-            zIndex: "5",
+            width: "19.2%",
+            zIndex: "5"
           }}
-          // bodyStyle={{overflow: "auto", }}
+          bodyStyle={{ justifyContent:"center",paddingTop:"20%" }}
           style={{
-            width: 300,
+            width: "100%",
             height: 500,
             backgroundColor: "gray",
             overflow: "auto",
@@ -40,11 +40,10 @@ export const Boards = ({ title, headerColor, data }: props) => {
                 src={plus}
                 alt=""
                 className="text-white"
-                style={{ cursor: "pointer"}}
+                style={{ cursor: "pointer" }}
                 onClick={async (e: any) => {
                   title && setContainer([...container, <Cards />]);
                 }}
-                
               />
             </Tooltip>
           }
@@ -52,7 +51,7 @@ export const Boards = ({ title, headerColor, data }: props) => {
           {/* <div className="absolute"> */}
           {container.map((item: any, index: number) => {
             console.log("item", item);
-            return <div key={index}>{item}</div>;
+            return <div  className="mt-2"  key={index}>{item}</div>;
           })}
         </Card>
       </div>
