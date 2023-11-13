@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
 import {PlusCircleOutlined } from "@ant-design/icons";
 import { DatePicker, Tree } from "antd";
 import type { DataNode, TreeProps } from "antd/es/tree";
@@ -12,17 +12,20 @@ const App: React.FC = () => {
     console.log("selected", selectedKeys, info);
   };
 
+  type childrens = {
+    title: ReactElement,
+    key : string
+
+  }
+
   type TreeData = {
     title: string| number ;
     key: string;
+    children ?: childrens[]
   
   }
 
-  type childrens = {
-    children:any[],
-    title:string,
-
-  }
+  
 
   const [TreeDataState, setTreeDataState] = useState<number>(0);
   const [display, setDisplay] = useState(true);
@@ -78,8 +81,6 @@ const App: React.FC = () => {
   useEffect(() => {
     setTreeDataState(treeData.length + 1);
     console.log(treeData[0].children);
-
-
   }, [treeData]);
 
   return (
