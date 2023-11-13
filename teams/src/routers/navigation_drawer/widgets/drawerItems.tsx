@@ -14,7 +14,6 @@ interface IconsProps{
 const DrawerContent = React.forwardRef(({ active }: { active?: any }, ref,) => {
 
     const treeview = useRef<any>(null);
-     
 
     //navigate
     const navigate = useNavigate();
@@ -36,7 +35,7 @@ const DrawerContent = React.forwardRef(({ active }: { active?: any }, ref,) => {
             onItemClick={(e:any)=>{ e.itemData.route && navigate(e.itemData.route); }}
             >
                 <SearchEditorOptions
-                    placeholder="Type search value here..."                    
+                    placeholder="Type search value here..."
                 />
             </TreeView>
 
