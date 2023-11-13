@@ -1,30 +1,25 @@
 import React, { useState } from "react";
 import TreeTemplate from "./TreeTemplate";
-import {
-  // EditOutlined,
-  // EllipsisOutlined,
-  // SettingOutlined,
-} from "@ant-design/icons";
+import { EllipsisOutlined } from "@ant-design/icons";
 import { Card, Input } from "antd";
 
 const { Meta } = Card;
 
 export const Cards: React.FC = () => {
-  // const [showTreeTemplate, setShowTreeTemplate] = useState(false);
+  const [showTreeTemplate, setShowTreeTemplate] = useState(false);
 
   return(
     <Card
-      style={{ width: 300 }}
-      extra={<a href="#">More</a>}
+      style={{ width: 350, justifyContent: "center", alignItems: "center", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)" }}
       actions={[
-        // <div onClick={() => setShowTreeTemplate(true)}>
-          // <EllipsisOutlined key="ellipsis" />
-          <TreeTemplate/>
-        // </div>,
+        <div onClick={() => setShowTreeTemplate(!showTreeTemplate)}>
+          <EllipsisOutlined key="ellipsis" />
+        </div>,
       ]}
     >
-      <Meta title="Card title" /><br/>
-      <Input placeholder="Basic usage" />
+      <Meta title="" /><br/>
+      <Input placeholder="Task" />
+      {showTreeTemplate && <TreeTemplate/>}
     </Card>
   );
 };

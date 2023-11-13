@@ -8,8 +8,8 @@ import {Cards} from './templates/cardsTemplate2';
 const App = () => {
   return (
     <div className="w-full h-full">
-      {/* <Cards /> */}
-<MyRoutes />
+      <Cards />
+{/* <MyRoutes /> */}
     </div>
   )
 }
