@@ -20,12 +20,6 @@ const data = [
     description: '' },
 ];
 
-// interface listprops {
-//   id: string;
-//   title?: string;
-//   img?: string;
-//   description?: string;
-// }
 interface props {
   label?: string;
   InputType?: string;
@@ -36,6 +30,7 @@ interface props {
   isList?: boolean;
   multipleInputs?: any[];
    title?: string;
+  //  tipTitle: string;
    img?: string;
    description?: string;
 }
@@ -49,9 +44,10 @@ const App: React.FC = ({
   isMultiple = false,
   multipleInputs,
   isList = true,
-   title,
-   img,
-   description
+  title,
+  // tipTitle,
+  img,
+  description
 }: props) => {
   const [value, setValue] = useState<string | number>();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -96,7 +92,7 @@ const App: React.FC = ({
                   <List.Item>
                     <List.Item.Meta
                       avatar={
-                        <Tooltip title="Hey" style={{backgroundColor: "blue", color: "white"}}>                      
+                        <Tooltip title='Your name'>                      
                           <Avatar
                           src={item.img}
                         />
