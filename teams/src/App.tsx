@@ -1,9 +1,6 @@
 
 import "devextreme/dist/css/dx.light.css";
-// import { Main } from "./components/Devs/developer";
-// import { Cards } from "./templates/cards";
 import MyRoutes from './routers';
-import {Cards} from './templates/cardsTemplate2';
 
 const App = () => {
   return (
