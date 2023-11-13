@@ -31,7 +31,7 @@ export const Cards: React.FC<props> = () => {
   // const [addInput, setAddInput] = useState<boolean>();
   // const [count, setCount] = useState<number>(0);
 
-  const [treeData, setTreeData] = useState<DataNode[]>([
+  const [treeData, setTreeData] = useState<any[]>:DataNode[]([
     {
       title: "parent 1",
       key: "0-0",
