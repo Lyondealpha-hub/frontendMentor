@@ -2,7 +2,7 @@ import { Card, Tooltip } from "antd";
 import plus from "../assets/plus.png";
 import { useState } from "react";
 import { Cards } from "./cards";
-import { HoverStyle } from "devextreme-react/chart";
+// import { HoverStyle } from "devextreme-react/chart";
 
 interface props {
   title: string;
