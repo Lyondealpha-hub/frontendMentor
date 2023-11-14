@@ -26,7 +26,7 @@ export const Developers: React.FC<props> = () => {
         </div>
 
         <hr />
-        <div className="flex gap-2 justify-center p-2 ">
+        <div className="grid grid-cols-4 gap-2 p-8">
           {data.map(({ title, headerColor }, id) => (
             <Boards
               key={id}

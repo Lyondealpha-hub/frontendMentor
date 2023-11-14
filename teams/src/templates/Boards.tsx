@@ -23,12 +23,12 @@ export const Boards = ({ title, headerColor, data }: props) => {
           headStyle={{
             backgroundColor: `${headerColor}`,
             position: "fixed",
-            width: "19.2%",
+            width: 300,
             zIndex: "5"
           }}
           bodyStyle={{ justifyContent:"center",paddingTop:"20%" }}
           style={{
-            width: "100%",
+            width: 300,
             height: 500,
             backgroundColor: "gray",
             overflow: "auto",
