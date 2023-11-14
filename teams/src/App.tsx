@@ -11,6 +11,6 @@ const App = () => {
     <div className="w-full h-full bg-gray-300 ">
       <MyRoutes />
     </div>
-};
+)};
 
 export default App;
