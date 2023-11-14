@@ -6,6 +6,7 @@ import InputTemplate from "./InputTemplate";
 import Datepicker from "./Datepicker";
 import tree from "../assets/hierarchical-structure.png";
 
+
 type TreeData = {
   title: React.ReactNode;
   key: string;
@@ -21,18 +22,18 @@ const App: React.FC = () => {
   const [display, setDisplay] = useState(true);
   // const [inputValue, setInputValue] = useState<string>("");
   const [taskCount, setTaskCount] = useState(1);
-  const [count, setCount] = useState<number>(1);
+  const [count, setCount] = useState<number>(0);
   const [treeData, setTreeData] = useState<TreeData[]>([
     {
-      title: count,
+      title: count +1,
       key: "0-0",
       children: [
         {
           title: (
             <div>
               <InputTemplate />
-              <Datepicker />
-              {display ? <div>Task 1</div> : <div>Task 2</div>}
+              {display ? <div>Task 1</div> : null}
+
             </div>
           ),
           key: "0-0-0",
@@ -52,7 +53,6 @@ const App: React.FC = () => {
       title: (
         <div>
           <InputTemplate />
-          <DatePicker />
           <div>Task {newTaskCount}</div>
         </div>
       ),
@@ -98,6 +98,9 @@ const App: React.FC = () => {
           className="px-3"
         />
       </li>
+      <div className="flex justify-center mt-3">
+     
+    </div>
     </div>
   );
 };
