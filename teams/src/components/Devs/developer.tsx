@@ -26,7 +26,11 @@ export const Developers: React.FC<props> = () => {
         </div>
 
         <hr />
+<<<<<<< HEAD
+        <div className="flex gap-2 justify-center p-2 ">
+=======
         <div className="grid grid-cols-5 w-full gap-x-3 py-2 px-1">
+>>>>>>> 4ae31934099d2efef99580a8d598fca152ad8e14
           {data.map(({ title, headerColor }, id) => (
             <Boards
               key={id}

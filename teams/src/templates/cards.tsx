@@ -8,6 +8,8 @@ import tree from "../assets/hierarchical-structure.png";
 
 interface props {}
 
+
+
 export const Cards: React.FC<props> = () => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     return e.target.value;
@@ -17,6 +19,11 @@ export const Cards: React.FC<props> = () => {
       title: "parent 1",
       key: "0-0",
       children: [
+        {
+          title: <textarea />,
+          key: "0-0-0",
+          children: [],
+        },
         {
           title: (
             <input
@@ -30,10 +37,22 @@ export const Cards: React.FC<props> = () => {
         },
       ],
     },
-  ];
+  ]);
+
   const onSelect: TreeProps["onSelect"] = (selectedKeys, info) => {
     console.log("selected", selectedKeys, info);
+    setTreeData([
+      // ...treeData[0].,
+      {
+        title: <textarea />,
+        key: "0-0-0",
+        children: [],
+      },
+    ]);
   };
+
+  ];
+  
   return (
     <>
       <Card
