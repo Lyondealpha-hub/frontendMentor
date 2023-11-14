@@ -7,9 +7,17 @@ import { CamButton, CaptureButton, SaveButton } from '../../accesserios/buttons'
 import Webcam from 'react-webcam'
 import { CheckboxTemplate } from '../../../templates/checkboxTemplate'
 
-export const CheckIn = () => {
-    const [isCam, setIsCam] = useState<boolean>(false);
+type props = {
+    statesx ?: any
+    updateStatex ?: (key:string, value:any) => void
+}
+
+
+export const CheckIn = ({ statesx,updateStatex } : props) => {
+    const [isCam, setIsCam] = useState<boolean>(true);
     const [Image, setImage] = useState<any>("");
+
+  
 
     const videoConstraints = {
         width: 300,
@@ -19,15 +27,21 @@ export const CheckIn = () => {
 
 
     const webcamRef = useRef<any>(null);
+
     const capture = useCallback(
         () => {
             const imageSrc = webcamRef.current.getScreenshot();
             setImage(imageSrc);
             console.log(imageSrc);
+            
 
         },
         [webcamRef]
     );
+
+
+
+
 
 
     return (
@@ -46,9 +60,10 @@ export const CheckIn = () => {
                     <InputsTemplate
                         InputType={'string'}
                         label='Name'
-                        placeholder={''}
-                        itemChange={() => { }}
-                        disabled
+                        placeholder={statesx?.name}
+                        itemChange={(e) => { updateStatex && updateStatex('name', e) }}
+                        disabled={isCam}
+
 
                     />
 
@@ -56,7 +71,7 @@ export const CheckIn = () => {
                     <>
                         <Form.Item className='my-0' label={<p className=''>{"Capture/Preview"}</p>} colon={true}>
                             <div className='flex justify-between space-x-3'>
-                                {isCam ?
+                                {!isCam ?
                                     <>
                                         <div className='w-1/2 '>
                                             <Webcam
@@ -108,8 +123,8 @@ export const CheckIn = () => {
                     <div className='w-full flex  justify-between'>
                         <div className='w-1/2 space-x-1 '>
                             <Checkbox className='border-[1px] px-1 rounded' />
-                            <CamButton cam={() => { setIsCam(!isCam) }} btnName={isCam == true ? "OFF" : "ON"} />
-                            {isCam == true && <CaptureButton handleCapture={capture} btnName={'Capture'} />}
+                            <CamButton cam={() => { setIsCam(!isCam) }} btnName={isCam == true ? "ON" : "OFF"} />
+                            {isCam == false && <CaptureButton handleCapture={capture} btnName={'Capture'} />}
                         </div>
                         <div className='w-1/2 flex justify-end'>
                             <SaveButton handleSave={() => { }} btnName={'Save'} />

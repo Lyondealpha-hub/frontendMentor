@@ -7,7 +7,14 @@ import { CamButton, CaptureButton, SaveButton } from '../../accesserios/buttons'
 import Webcam from 'react-webcam'
 import { CheckboxTemplate } from '../../../templates/checkboxTemplate'
 
-export const CheckOut = () => {
+type props = {
+    statesx ?: any
+    updateStatex ?: (key:string, value:any) => void
+}
+
+
+
+export const CheckOut = ({ statesx,updateStatex } : props) => {
     const [isCam, setIsCam] = useState<boolean>(false);
     const [Image, setImage] = useState<any>("");
 
