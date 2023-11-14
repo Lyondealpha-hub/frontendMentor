@@ -42,13 +42,13 @@ const options: SelectProps['options'] = [
   },
   {
     id: "2",
-    label: 'Stone',
-    Value: "Stone",
+    label: 'Millicent',
+    Value: "Millicent",
   },
   {
     id: "3",
-    label: 'Percy',
-    value: "Percy",
+    label: 'Stone',
+    value: "Stone",
   },
   {
     id: "4",
@@ -69,6 +69,11 @@ const options: SelectProps['options'] = [
     id: "7",
     label: 'Samy',
     value: "Samy",
+  },
+  {
+    id: "8",
+    label: 'Percy',
+    value: "Percy",
   },
 ];
 
@@ -121,10 +126,11 @@ const Modalx = ({
         open={isModalOpen}
         onOk={handleOK}
         onCancel={handleCancel}
+        width={700}
         // okText="Submit"
         okButtonProps={{ style: { backgroundColor: "#427bed" } }}
       >
-        <div className="w-full p-16">
+        <div className="w-full p-10">
           {isList ? (
             <>
               <List
@@ -164,6 +170,7 @@ const Modalx = ({
                               <Input
                                 size={"middle"}
                                 type={InputType}
+                                style={{ width: "60%" }}
                                 placeholder={placeholder}
                                 disabled={disabled}
                                 value={placeholder}
@@ -184,7 +191,7 @@ const Modalx = ({
                               <Select
                                 mode="multiple"
                                 allowClear
-                                style={{ width: "100%" }}
+                                style={{ width: "60%" }}
                                 placeholder="select assignee"
                                 onChange={handleChange}
                                 options={options}

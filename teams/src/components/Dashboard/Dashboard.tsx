@@ -121,8 +121,8 @@ export const Dashboard = () => {
         <SideDrawer handleClose={(e: any) => { setIsSideOpen(false) }} handleOpen={isSideOpen} />
       </>
 
-      <Form labelCol={{span: 9}}>
-      <Modalx  isMultiple={true} isList={false} isModalOpen={isModalOpen} handleCancel={() => { setIsModalOpen(false) } } multipleInputs={assings}  />
+      <Form labelCol={{span: 6}}>
+      <Modalx  isMultiple={true} isList={false} isModalOpen={isModalOpen} handleCancel={() => { setIsModalOpen(false) } } multipleInputs={assings} />
       </Form>
 
     </main>
