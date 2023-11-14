@@ -1,4 +1,14 @@
 import React, { useState } from "react";
+import { Button, Modal, Form, Input, Avatar, List, Tooltip } from "antd";
+import { spawn } from "child_process";
+
+type incomingData = {
+  id: string;
+  title: string;
+  img: string;
+  description: string;
+};
+
 import { Modal, Form, Input, Avatar, List, Tooltip, Select, Space } from "antd";
 import type { SelectProps } from "antd";
 
@@ -28,6 +38,7 @@ const data = [
     description: "",
   },
 ];
+
 
 const options: SelectProps['options'] = [
   {
@@ -97,9 +108,13 @@ interface props {
   //  tipTitle: string;
   img?: string;
   description?: string;
+  data?: incomingData[] ;
+  
+
+  
 }
 
-const Modalx = ({
+const  Modalx = ({
   label,
   InputType,
   placeholder,
@@ -115,6 +130,7 @@ const Modalx = ({
   handleOK,
   img,
   description,
+  data,
 }: props) => {
   const [value, setValue] = useState<string | number>();
   // const [isModalOpen, setIsModalOpen] = useState(false);
@@ -122,8 +138,14 @@ const Modalx = ({
   return (
     <>
       <Modal
-        title={title}
+        title={
+          <span className="flex flex-col space-y-2">
+            <p className="text-slate-700 font-bold text-base">{title}</p>
+            <p className="text-slate-500 font-medium text-sm">{description}</p>
+          </span>
+        }
         open={isModalOpen}
+        
         onOk={handleOK}
         onCancel={handleCancel}
         width={700}
@@ -134,21 +156,31 @@ const Modalx = ({
           {isList ? (
             <>
               <List
-                id={data[0].id}
+                id={undefined}
                 itemLayout="horizontal"
                 dataSource={data}
                 renderItem={(item, index) => (
-                  <List.Item>
-                    <List.Item.Meta
-                      avatar={
-                        <Tooltip title="Your name">
-                          <Avatar src={item.img} />
-                        </Tooltip>
-                      }
-                      title={item.title}
-                      description={item.description}
-                    />
-                  </List.Item>
+                  <Tooltip title='View Details' placement="right">
+
+                    <List.Item className="cursor-pointer">
+                      <List.Item.Meta
+                        avatar={
+                            <Avatar
+                              src={item.img}
+                              className="rounded-full ring ring-blue-400"
+                            />
+                        }
+                        title={item.title}
+                        description={
+
+                            <article className="flex flex-col space-y-2">
+                              <p className="text-slate-600 font-semibold">{item.description}</p>
+                              <span className="flex self-start items-center space-x-2 rounded-xl bg-stone-100 px-2 cursor-pointer hover:bg-stone-200 ">
+                                <p className="rounded-full animate-ping bg-cyan-800 w-1 h-1"></p>
+                                <p className="text-blue-500 font-bold text-sm pr-1">Jesse</p>
+                              </span>
+                            </article>
+                  </Tooltip>
                 )}
               />
             </>
