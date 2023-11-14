@@ -1,32 +1,85 @@
 import React, { useState } from "react";
-import { Button, Modal, Form, Input, Avatar, List, Tooltip } from "antd";
+import { Modal, Form, Input, Avatar, List, Tooltip, Select, Space } from "antd";
+import type { SelectProps } from "antd";
 
 const data = [
   {
-    id: '0',
-    title: '',
+    id: "0",
+    title: "",
     img: `https://xsgames.co/randomusers/avatar.php?g=pixel&key=${1}`,
-    description: ''
+    description: "",
   },
   {
-    id: '1',
-    title: '',
+    id: "1",
+    title: "",
     img: `https://xsgames.co/randomusers/avatar.php?g=pixel&key=${2}`,
-    description: ''
+    description: "",
   },
   {
-    id: '2',
-    title: '',
+    id: "2",
+    title: "",
     img: `https://xsgames.co/randomusers/avatar.php?g=pixel&key=${3}`,
-    description: ''
+    description: "",
   },
   {
-    id: '3',
-    title: '',
+    id: "3",
+    title: "",
     img: `https://xsgames.co/randomusers/avatar.php?g=pixel&key=${4}`,
-    description: ''
+    description: "",
   },
 ];
+
+const options: SelectProps['options'] = [
+  {
+    id: "0",
+    label: 'Ahmed',
+    value: "Ahmed",
+  },
+  {
+    id: "1",
+    label: 'Maslan',
+    value: "Maslan",
+  },
+  {
+    id: "2",
+    label: 'Millicent',
+    Value: "Millicent",
+  },
+  {
+    id: "3",
+    label: 'Stone',
+    value: "Stone",
+  },
+  {
+    id: "4",
+    label: 'Oscar',
+    value: "Oscar",
+  },
+  {
+    id: "5",
+    label: 'Jesse',
+    value: "Jesse",
+  },
+  {
+    id: "6",
+    label: 'Emma',
+    value: "Emma",
+  },
+  {
+    id: "7",
+    label: 'Samy',
+    value: "Samy",
+  },
+  {
+    id: "8",
+    label: 'Percy',
+    value: "Percy",
+  },
+];
+
+const handleChange = (value: string[]) => {
+  console.log(`selected ${value}`);
+};
 
 interface props {
   label?: string;
@@ -39,7 +92,7 @@ interface props {
   disabled?: boolean;
   isMultiple?: boolean;
   isList?: boolean;
-  multipleInputs : any[];
+  multipleInputs: any[];
   title?: string;
   //  tipTitle: string;
   img?: string;
@@ -61,20 +114,19 @@ const Modalx = ({
   handleCancel,
   handleOK,
   img,
-  description
+  description,
 }: props) => {
   const [value, setValue] = useState<string | number>();
   // const [isModalOpen, setIsModalOpen] = useState(false);
 
-
   return (
     <>
-
       <Modal
         title={title}
         open={isModalOpen}
         onOk={handleOK}
         onCancel={handleCancel}
+        width={700}
         // okText="Submit"
         okButtonProps={{ style: { backgroundColor: "#427bed" } }}
       >
@@ -89,10 +141,8 @@ const Modalx = ({
                   <List.Item>
                     <List.Item.Meta
                       avatar={
-                        <Tooltip title='Your name'>
-                          <Avatar
-                            src={item.img}
-                          />
+                        <Tooltip title="Your name">
+                          <Avatar src={item.img} />
                         </Tooltip>
                       }
                       title={item.title}
@@ -104,27 +154,53 @@ const Modalx = ({
             </>
           ) : (
             <>
-
               <div className="space-y-3">
                 {isMultiple ? (
                   <>
                     {multipleInputs?.map(
-                      ({ id, inputType, label, placeholder, disabled }) => {
+                      ({ id, inputType, label, placeholder, name, disabled }) => {
                         return (
-                          <Form.Item  className="justify-center my-1" label={<p>{label}</p>}>
-                            <Input
-                              size={"middle"}
-                              type={InputType}
-                              placeholder={placeholder}
-                              disabled={disabled}
-                              value={placeholder}
-                              onChange={(e: any) => {
-                                const inputValue = e.target.value;
-                                setValue(inputValue);
-                                itemChange && itemChange(inputValue);
-                              }}
-                            />
-                          </Form.Item>
+                          <>
+                            {id === 0 ?
+                            <>
+                            <Form.Item
+                              className="justify-center my-1"
+                              label={<p>{label}</p>}
+                            >
+                              <Input
+                                size={"middle"}
+                                type={InputType}
+                                style={{ width: "60%" }}
+                                placeholder={placeholder}
+                                disabled={disabled}
+                                value={placeholder}
+                                onChange={(e: any) => {
+                                  const inputValue = e.target.value;
+                                  setValue(inputValue);
+                                  itemChange && itemChange(inputValue);
+                                }}
+                              />
+                            </Form.Item>
+                            </>
+                            :
+                            <>
+                            <Form.Item
+                              className="justify-center my-1"
+                              label={<p>{label}</p>}
+                            >
+                              <Select
+                                mode="multiple"
+                                allowClear
+                                style={{ width: "60%" }}
+                                placeholder="select assignee"
+                                onChange={handleChange}
+                                options={options}
+                              />
+                            </Form.Item>
+                            </>
+                            }
+
+                          </>
                         );
                       }
                     )}
@@ -146,7 +222,6 @@ const Modalx = ({
                   </Form.Item>
                 )}
               </div>
-
             </>
           )}
         </div>
