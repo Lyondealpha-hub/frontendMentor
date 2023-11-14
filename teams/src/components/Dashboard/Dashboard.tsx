@@ -38,7 +38,7 @@ export const Dashboard = () => {
     <main className="w-full h-full justify-center ">
       <div className="w-full h-full">
         {/* Top */}
-        <div className='w-full h-2/5 '>
+        <div className='w-full h-3/5 '>
           <div className='flex  justify-evenly p-1 space-x-1'>
             {summary.map(({ id, label, title, image, desc }) => {
               return (
@@ -111,7 +111,7 @@ export const Dashboard = () => {
         </div>
         {/* Bottom */}
 
-        <div className='w-full h-3/5'>
+        <div className='w-full h-2/5'>
           <DatagridTemplate columns={allDevs} />
         </div>
 
