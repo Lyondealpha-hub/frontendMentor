@@ -8,7 +8,7 @@ export const Developers: React.FC<props> = () => {
     { title: "Create new Todo", headerColor: "red" },
     { title: "Start with", headerColor: "orange" },
     { title: "In-Progress", headerColor: "blue" },
-    { title: "Review", headerColor: "pink" },
+    // { title: "Review", headerColor: "pink" },
     { title: "Done", headerColor: "green" }
   ];
   return (
