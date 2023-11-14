@@ -36,7 +36,7 @@ export const Boards = ({ title, headerColor, data }: props) => {
           }}
           extra={
             <Tooltip title="Add new task" color="lime">
-              <img
+              {title==="Create new Todo"?<img
                 src={plus}
                 alt=""
                 className="text-white"
@@ -44,7 +44,7 @@ export const Boards = ({ title, headerColor, data }: props) => {
                 onClick={async (e: any) => {
                   title && setContainer([...container, <Cards />]);
                 }}
-              />
+              />:""}
             </Tooltip>
           }
         >

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import { Card } from "antd";
 // import { EllipsisOutlined} from '@ant-design/icons';
 // import { DownOutlined } from '@ant-design/icons';
@@ -8,51 +8,57 @@ import tree from "../assets/hierarchical-structure.png";
 
 interface props {}
 
-const treeData: DataNode[] = [
-  {
-    title: "parent 1",
-    key: "0-0",
-    children: [
-      {
-        title: <textarea />,
-        key: "0-0-0",
-        children: [],
-      },
-      {
-        title: <input type="text" placeholder=" + add sub-item" />,
-        key: "0-0-1",
-        children: [],
-      },
-    ],
-  },
-];
 export const Cards: React.FC<props> = () => {
-  const [subItems, setSubItems] = useState<any>(treeData[0].children);
-  const [enterInput, setEnterInput] = useState<boolean>();
-  const [addInput, setAddInput] = useState<boolean>();
-  const [count, setCount] = useState<number>(0);
-  // const []
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    return e.target.value;
+  };
+  const treeData: DataNode[] = [
+    {
+      title: "parent 1",
+      key: "0-0",
+      children: [
+        {
+          title: (
+            <input
+              type="text"
+              onChange={handleChange}
+              placeholder=" + add sub-item"
+            />
+          ),
+          key: "0-0-1",
+          children: [],
+        },
+      ],
+    },
+  ];
   const onSelect: TreeProps["onSelect"] = (selectedKeys, info) => {
     console.log("selected", selectedKeys, info);
   };
-  console.log(subItems);
-
   return (
     <>
       <Card
         bordered={false}
-        style={{ width: 250, marginTop: 40, marginRight: "20%" }}
-        actions={[
-          <Tree
+        style={{ width: 250,height:50, marginTop: 40, marginRight: "20%" }}
+        // actions={[
+          // <Tree
+          //   showLine
+          //   switcherIcon={<img src={tree} alt="" />}
+          //   defaultExpandedKeys={["0-0-0"]}
+          //   onSelect={onSelect}
+          //   treeData={treeData}
+          //   style={{}}
+          // />,
+        // ]}
+      >
+        <input type="text" placeholder="New task" />
+        <Tree
             showLine
             switcherIcon={<img src={tree} alt="" />}
             defaultExpandedKeys={["0-0-0"]}
             onSelect={onSelect}
             treeData={treeData}
+            style={{}}
           />,
-        ]}
-      >
-        <input type="text" placeholder="New task" />
       </Card>
     </>
   );
