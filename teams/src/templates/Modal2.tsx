@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Button, Modal, Form, Input, Avatar, List, Tooltip } from "antd";
+import { Button, Modal, Form, Input, Avatar, List, Tooltip, Select } from "antd";
 import { spawn } from "child_process";
+import type { SelectProps } from "antd";
 
 type incomingData = {
   id: string;
@@ -9,35 +10,33 @@ type incomingData = {
   description: string;
 };
 
-import { Modal, Form, Input, Avatar, List, Tooltip, Select, Space } from "antd";
-import type { SelectProps } from "antd";
 
-const data = [
-  {
-    id: "0",
-    title: "",
-    img: `https://xsgames.co/randomusers/avatar.php?g=pixel&key=${1}`,
-    description: "",
-  },
-  {
-    id: "1",
-    title: "",
-    img: `https://xsgames.co/randomusers/avatar.php?g=pixel&key=${2}`,
-    description: "",
-  },
-  {
-    id: "2",
-    title: "",
-    img: `https://xsgames.co/randomusers/avatar.php?g=pixel&key=${3}`,
-    description: "",
-  },
-  {
-    id: "3",
-    title: "",
-    img: `https://xsgames.co/randomusers/avatar.php?g=pixel&key=${4}`,
-    description: "",
-  },
-];
+// const data = [
+//   {
+//     id: "0",
+//     title: "",
+//     img: `https://xsgames.co/randomusers/avatar.php?g=pixel&key=${1}`,
+//     description: "",
+//   },
+//   {
+//     id: "1",
+//     title: "",
+//     img: `https://xsgames.co/randomusers/avatar.php?g=pixel&key=${2}`,
+//     description: "",
+//   },
+//   {
+//     id: "2",
+//     title: "",
+//     img: `https://xsgames.co/randomusers/avatar.php?g=pixel&key=${3}`,
+//     description: "",
+//   },
+//   {
+//     id: "3",
+//     title: "",
+//     img: `https://xsgames.co/randomusers/avatar.php?g=pixel&key=${4}`,
+//     description: "",
+//   },
+// ];
 
 
 const options: SelectProps['options'] = [
@@ -109,9 +108,6 @@ interface props {
   img?: string;
   description?: string;
   data?: incomingData[] ;
-  
-
-  
 }
 
 const  Modalx = ({
@@ -161,7 +157,6 @@ const  Modalx = ({
                 dataSource={data}
                 renderItem={(item, index) => (
                   <Tooltip title='View Details' placement="right">
-
                     <List.Item className="cursor-pointer">
                       <List.Item.Meta
                         avatar={
@@ -180,6 +175,9 @@ const  Modalx = ({
                                 <p className="text-blue-500 font-bold text-sm pr-1">Jesse</p>
                               </span>
                             </article>
+                        }
+                        />
+                        </List.Item>
                   </Tooltip>
                 )}
               />
