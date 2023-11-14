@@ -2,40 +2,51 @@ import React, { useState } from "react";
 import { Button, Modal, Form, Input, Avatar, List, Tooltip } from "antd";
 
 const data = [
-  {id:'0',
+  {
+    id: '0',
     title: '',
     img: `https://xsgames.co/randomusers/avatar.php?g=pixel&key=${1}`,
-  description: ''  },
-  {id:'1',
+    description: ''
+  },
+  {
+    id: '1',
     title: '',
     img: `https://xsgames.co/randomusers/avatar.php?g=pixel&key=${2}`,
-    description: '' },
-  {id:'2',
+    description: ''
+  },
+  {
+    id: '2',
     title: '',
     img: `https://xsgames.co/randomusers/avatar.php?g=pixel&key=${3}`,
-    description: '' },
-  {id:'3',
+    description: ''
+  },
+  {
+    id: '3',
     title: '',
     img: `https://xsgames.co/randomusers/avatar.php?g=pixel&key=${4}`,
-    description: '' },
+    description: ''
+  },
 ];
 
 interface props {
   label?: string;
   InputType?: string;
   itemChange?: (e: any) => void;
+  isModalOpen: boolean;
+  handleCancel: (e: any) => void;
+  handleOK?: (e: any) => void;
   placeholder?: string;
   disabled?: boolean;
   isMultiple?: boolean;
   isList?: boolean;
-  multipleInputs?: any[];
-   title?: string;
+  multipleInputs : any[];
+  title?: string;
   //  tipTitle: string;
-   img?: string;
-   description?: string;
+  img?: string;
+  description?: string;
 }
 
-const App: React.FC = ({
+const Modalx = ({
   label,
   InputType,
   placeholder,
@@ -46,42 +57,28 @@ const App: React.FC = ({
   isList = true,
   title,
   // tipTitle,
+  isModalOpen,
+  handleCancel,
+  handleOK,
   img,
   description
 }: props) => {
   const [value, setValue] = useState<string | number>();
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
 
   return (
     <>
-      <Button
-        type="primary"
-        onClick={showModal}
-        className="bg-blue-500 text-white font-md"
-      >
-        Open Modal
-      </Button>
+
       <Modal
         title={title}
         open={isModalOpen}
-        onOk={handleOk}
+        onOk={handleOK}
         onCancel={handleCancel}
         // okText="Submit"
         okButtonProps={{ style: { backgroundColor: "#427bed" } }}
       >
-        <div className="w-full">
+        <div className="w-full p-10">
           {isList ? (
             <>
               <List
@@ -92,10 +89,10 @@ const App: React.FC = ({
                   <List.Item>
                     <List.Item.Meta
                       avatar={
-                        <Tooltip title='Your name'>                      
+                        <Tooltip title='Your name'>
                           <Avatar
-                          src={item.img}
-                        />
+                            src={item.img}
+                          />
                         </Tooltip>
                       }
                       title={item.title}
@@ -107,45 +104,49 @@ const App: React.FC = ({
             </>
           ) : (
             <>
-              <Form.Item className="justify-center my-1" label={<p>{label}</p>}>
-                <div className="space-y-3">
-                  {isMultiple ? (
-                    <>
-                      {multipleInputs?.map(
-                        ({ id, inputType, placeholder, disabled }) => {
-                          return (
-                              <Input
-                                size={"middle"}
-                                type={InputType}
-                                placeholder={placeholder}
-                                disabled={disabled}
-                                value={placeholder}
-                                onChange={(e: any) => {
-                                  const inputValue = e.target.value;
-                                  setValue(inputValue);
-                                  itemChange && itemChange(inputValue);
-                                }}
-                              />
-                          );
-                        }
-                      )}
-                    </>
-                  ) : (
-                      <Input
-                        size={"middle"}
-                        type={InputType}
-                        placeholder={placeholder}
-                        disabled={disabled}
-                        value={placeholder}
-                        onChange={(e: any) => {
-                          const inputValue = e.target.value;
-                          setValue(inputValue);
-                          itemChange && itemChange(inputValue);
-                        }}
-                      />
-                  )}
-                </div>
-              </Form.Item>
+
+              <div className="space-y-3">
+                {isMultiple ? (
+                  <>
+                    {multipleInputs?.map(
+                      ({ id, inputType, label, placeholder, disabled }) => {
+                        return (
+                          <Form.Item  className="justify-center my-1" label={<p>{label}</p>}>
+                            <Input
+                              size={"middle"}
+                              type={InputType}
+                              placeholder={placeholder}
+                              disabled={disabled}
+                              value={placeholder}
+                              onChange={(e: any) => {
+                                const inputValue = e.target.value;
+                                setValue(inputValue);
+                                itemChange && itemChange(inputValue);
+                              }}
+                            />
+                          </Form.Item>
+                        );
+                      }
+                    )}
+                  </>
+                ) : (
+                  <Form.Item>
+                    <Input
+                      size={"middle"}
+                      type={InputType}
+                      placeholder={placeholder}
+                      disabled={disabled}
+                      value={placeholder}
+                      onChange={(e: any) => {
+                        const inputValue = e.target.value;
+                        setValue(inputValue);
+                        itemChange && itemChange(inputValue);
+                      }}
+                    />
+                  </Form.Item>
+                )}
+              </div>
+
             </>
           )}
         </div>
@@ -154,4 +155,4 @@ const App: React.FC = ({
   );
 };
 
-export default App;
+export default Modalx;
