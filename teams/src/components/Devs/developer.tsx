@@ -17,10 +17,10 @@ export const Developers: React.FC<props> = () => {
       <div >
         <div>
           <div className="flex justify-between py-5 px-5 ">
-            <div className="w-[10%]">
+            <div className="w-[40%]">
               <CardTemplates content="Task Assignment" title="FrontEnd" />
             </div>
-            <div className='w-[100%] px-20'>
+            <div className='w-[100%] '>
             <Timer/>
             </div>
             <div className="w-[20%]">

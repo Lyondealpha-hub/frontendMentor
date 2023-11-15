@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import time from '../assets/time.png';
 export const Timer = () => {
     const [starttime , setStarttime] = useState<string>('Display Time');
     const [endtime , setEndtime] = useState<string>('Display Time');
     const [timeSpent , setTimespent] = useState<string>('Display ')
   return (
-    <div className="shadow-lg border p-8 px-10 rounded-lg w-[100%] h-[90%]">
+    <div className="shadow-lg border p-8 px-10 rounded-lg w-[90%] h-[90%]">
       {/* <label className=" text-lg ">{dayOfWeek}</label>
       <input className="font-bold text-xl " type="date"></input> */}
       <div className="flex gap-40 justify-center ">

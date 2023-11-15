@@ -48,7 +48,7 @@ export const CardS = ({ title }: ImgProps) => {
 
   return (
     <>
-      <Card className="shadow-lg">
+      <Card className="shadow-lg h-[88%]">
         <div className="flex justify-center gap-20">
         {content.map(({id,title,image}) => (
           <div key={id} className=" cursor-pointer" onClick={() => setOpenModal(true)}>
