@@ -74,11 +74,13 @@ export const MyProvider = ({ children }: any) => {
             <>
               <textarea
                 placeholder="Add story point"
+                style={{ width: "auto" }} className="flex justify- mt-3 items-start "
+                
                 // onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
                 //   setDetails(e.target.value)
                 // }
                 // onKeyDown={handleKeyDown}
-                style={{ border: "2px solid gray", padding: 5 }}
+                // style={{ border: "2px solid gray", padding: 5 }}
               />
               <div>Task {count}</div>
             </>
@@ -97,7 +99,9 @@ export const MyProvider = ({ children }: any) => {
           <textarea
             // value={details}
             disabled={disableTextArea}
-            style={{ border: "2px solid gray", padding: 5 }}
+            style={{ width: "100%" }}
+            
+            className="flex justify- mt-3 items-start "
             placeholder="Add story point"
           />
           <div>Task {count}</div>

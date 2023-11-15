@@ -91,12 +91,13 @@ const App: React.FC = () => {
       </li>
       <li className=" ">
         <Tree
+          style={{ width: "auto" }} className="flex justify- mt-3 items-start "
           showLine
           switcherIcon={<img src={tree} alt="" />}
           defaultExpandedKeys={["0-0-0"]}
           onSelect={onSelect}
           treeData={treeData}
-          className="px-3"
+          // className="px-3"
         />
       </li>
       <div className="flex justify-center mt-3"></div>
