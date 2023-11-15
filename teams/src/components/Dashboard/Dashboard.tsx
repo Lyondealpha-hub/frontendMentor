@@ -4,22 +4,29 @@ import progress from '../../assets/progress.png'
 import pending from '../../assets/pending.png'
 import complete from '../../assets/complete.png'
 import eye from '../../assets/eye.png'
-import { Card } from 'antd';
+import { Card, Form } from 'antd';
 import { DatagridTemplate } from '../../templates/datagridTemplate'
 import { NewButton } from '../accesserios/buttons'
 import { allDevs } from './data/datagrid_cols'
 import { SideDrawer } from '../sideDrawer/SideDrawer'
 import { CardsTemplate } from '../../templates/cardsTemplate'
+import Modalx from '../../templates/Modal2'
 
 export const Dashboard = () => {
 
   const [isSideOpen, setIsSideOpen] = useState<boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const summary = [
     { id: 0, label: "", title: "Total Task", image: task, desc: 24 },
     { id: 1, label: "", title: "In-Progress", image: progress, desc: 30 },
     { id: 2, label: "", title: "Pending", image: pending, desc: 30 },
     { id: 3, label: "", title: "Completed", image: complete, desc: 30 },
+  ]
+  const assings = [
+    { id: 0, label: "Module Name", title: "Total Task", desc: 24 },
+    { id: 1, label: "Devs", title: "In-Progress",  desc: 30 },
+  
   ]
 
   const teams = [
@@ -31,7 +38,7 @@ export const Dashboard = () => {
     <main className="w-full h-full justify-center ">
       <div className="w-full h-full">
         {/* Top */}
-        <div className='w-full h-2/5 '>
+        <div className='w-full h-3/5 '>
           <div className='flex  justify-evenly p-1 space-x-1'>
             {summary.map(({ id, label, title, image, desc }) => {
               return (
@@ -94,7 +101,7 @@ export const Dashboard = () => {
                   <p>{"View"}</p>
                 </span>
               </button>
-              <NewButton btnName={'New Assignment Task'} handleNew={() => { }} />
+              <NewButton btnName={'New Assignment Task'} handleNew={() => { setIsModalOpen(true)}} />
 
             </div>
 
@@ -104,7 +111,7 @@ export const Dashboard = () => {
         </div>
         {/* Bottom */}
 
-        <div className='w-full h-3/5'>
+        <div className='w-full h-2/5'>
           <DatagridTemplate columns={allDevs} />
         </div>
 
@@ -113,6 +120,13 @@ export const Dashboard = () => {
       <>
         <SideDrawer handleClose={(e: any) => { setIsSideOpen(false) }} handleOpen={isSideOpen} />
       </>
+
+      <Form 
+      layout='horizontal'
+      className='w-full'
+      labelCol={{span: 6}}>
+      <Modalx  isMultiple={true} isList={false} isModalOpen={isModalOpen} handleCancel={() => { setIsModalOpen(false) } } multipleInputs={assings} />
+      </Form>
 
     </main>
   )

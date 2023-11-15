@@ -9,7 +9,7 @@ export const Developers: React.FC<props> = () => {
     { title: "Create new Todo", headerColor: "red" },
     { title: "Start with", headerColor: "orange" },
     { title: "In-Progress", headerColor: "blue" },
-    { title: "Review", headerColor: "pink" },
+    // { title: "Review", headerColor: "pink" },
     { title: "Done", headerColor: "green" }
   ];
   return (
@@ -30,7 +30,7 @@ export const Developers: React.FC<props> = () => {
         </div>
 
         <hr />
-        <div className="grid grid-cols-5 w-full gap-x-3 py-2 px-1">
+        <div className="grid grid-cols-4 gap-5 p-8">
           {data.map(({ title, headerColor }, id) => (
             <Boards
               key={id}
