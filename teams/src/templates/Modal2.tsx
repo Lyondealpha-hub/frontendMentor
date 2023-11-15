@@ -1,78 +1,77 @@
 import React, { useState } from "react";
-import { Modal, Form, Input, Avatar, List, Tooltip, Select, Space } from "antd";
+import {
+  Button,
+  Modal,
+  Form,
+  Input,
+  Avatar,
+  List,
+  Tooltip,
+  Select,
+  Tabs,
+  Popover,
+} from "antd";
+import { spawn } from "child_process";
 import type { SelectProps } from "antd";
 
-const data = [
-  {
-    id: "0",
-    title: "",
-    img: `https://xsgames.co/randomusers/avatar.php?g=pixel&key=${1}`,
-    description: "",
-  },
-  {
-    id: "1",
-    title: "",
-    img: `https://xsgames.co/randomusers/avatar.php?g=pixel&key=${2}`,
-    description: "",
-  },
-  {
-    id: "2",
-    title: "",
-    img: `https://xsgames.co/randomusers/avatar.php?g=pixel&key=${3}`,
-    description: "",
-  },
-  {
-    id: "3",
-    title: "",
-    img: `https://xsgames.co/randomusers/avatar.php?g=pixel&key=${4}`,
-    description: "",
-  },
-];
+type incomingData = {
+  id: string;
+  title: string;
+  img: string;
+  description: string;
+};
 
-const options: SelectProps['options'] = [
+interface content {
+  id: string;
+  title: string;
+  img: string;
+  description: string;
+}
+
+const options: SelectProps["options"] = [
   {
     id: "0",
-    label: 'Ahmed',
+    label: "Ahmed",
     value: "Ahmed",
   },
   {
     id: "1",
-    label: 'Maslan',
+    label: "Maslan",
     value: "Maslan",
   },
   {
     id: "2",
-    label: 'Millicent',
+    label: "Millicent",
     Value: "Millicent",
   },
   {
     id: "3",
-    label: 'Stone',
+    label: "Stone",
     value: "Stone",
   },
   {
     id: "4",
-    label: 'Oscar',
+    label: "Oscar",
     value: "Oscar",
   },
   {
     id: "5",
-    label: 'Jesse',
+    label: "Jesse",
     value: "Jesse",
   },
   {
     id: "6",
-    label: 'Emma',
+    label: "Emma",
     value: "Emma",
   },
   {
     id: "7",
-    label: 'Samy',
+    label: "Samy",
     value: "Samy",
   },
   {
     id: "8",
-    label: 'Percy',
+    label: "Percy",
     value: "Percy",
   },
 ];
@@ -87,6 +86,7 @@ interface props {
   itemChange?: (e: any) => void;
   isModalOpen: boolean;
   handleCancel: (e: any) => void;
+  hide?: (e: any) => void;
   handleOK?: (e: any) => void;
   placeholder?: string;
   disabled?: boolean;
@@ -97,6 +97,8 @@ interface props {
   //  tipTitle: string;
   img?: string;
   description?: string;
+  data?: incomingData[];
+  content?: content[];
 }
 
 const Modalx = ({
@@ -109,20 +111,45 @@ const Modalx = ({
   multipleInputs,
   isList = true,
   title,
-  // tipTitle,
   isModalOpen,
   handleCancel,
+  hide,
   handleOK,
   img,
   description,
+  data,
+  content,
 }: props) => {
   const [value, setValue] = useState<string | number>();
-  // const [isModalOpen, setIsModalOpen] = useState(false);
+  const [Open, setOpen] = useState(false);
+  const [isCar, setisCar] = useState(false);
+
+  // const hide = () => {
+  //   setOpen(false);
+  // };
+
+  const handleOpenChange = (newOpen: any) => {
+    setOpen(newOpen);
+  };
+
+  const contentList = (
+    <div>
+      <p>
+        Dev details
+      {/* {content} */}
+      </p>
+    </div>
+  );
 
   return (
     <>
       <Modal
-        title={title}
+        title={
+          <span className="flex flex-col space-y-2">
+            <p className="text-slate-700 font-bold text-base">{title}</p>
+            <p className="text-slate-500 font-medium text-sm">{description}</p>
+          </span>
+        }
         open={isModalOpen}
         onOk={handleOK}
         onCancel={handleCancel}
@@ -134,21 +161,50 @@ const Modalx = ({
           {isList ? (
             <>
               <List
-                id={data[0].id}
+                id={undefined}
                 itemLayout="horizontal"
                 dataSource={data}
                 renderItem={(item, index) => (
-                  <List.Item>
-                    <List.Item.Meta
-                      avatar={
-                        <Tooltip title="Your name">
-                          <Avatar src={item.img} />
-                        </Tooltip>
-                      }
-                      title={item.title}
-                      description={item.description}
-                    />
-                  </List.Item>
+                  <Tooltip title="Click to view details" placement="right">
+                    <List.Item className="cursor-pointer hover:bg-gray-200 w-full">
+                      <Popover
+                        content={
+                          <>
+                            {contentList}
+                            {/* <a onClick={hide}>Close</a> */}
+                          </>
+                        }
+                        title={item.title}
+                        trigger="click"
+                        onOpenChange={async (e: any) => {item.id && setOpen(true);}}
+                        placement="topRight"
+                      >
+                        <List.Item.Meta
+                        className="ml-4"
+                          avatar={
+                            <Avatar
+                              src={item.img}
+                              className="rounded-full ring ring-blue-400"
+                            />
+                          }
+                          title={item.title}
+                          description={
+                            <article className="flex flex-col space-y-2">
+                              <p className="text-slate-600 font-semibold">
+                                {item.description}
+                              </p>
+                              <span className="flex self-start items-center space-x-2 rounded-xl bg-stone-100 px-2 cursor-pointer hover:bg-stone-200 ">
+                                <p className="rounded-full animate-ping bg-cyan-800 w-1 h-1"></p>
+                                <p className="text-blue-500 font-bold text-sm pr-1">
+                                  Jesse
+                                </p>
+                              </span>
+                            </article>
+                          }
+                        />
+                      </Popover>
+                    </List.Item>
+                  </Tooltip>
                 )}
               />
             </>
@@ -158,48 +214,54 @@ const Modalx = ({
                 {isMultiple ? (
                   <>
                     {multipleInputs?.map(
-                      ({ id, inputType, label, placeholder, name, disabled }) => {
+                      ({
+                        id,
+                        inputType,
+                        label,
+                        placeholder,
+                        name,
+                        disabled,
+                      }) => {
                         return (
                           <>
-                            {id === 0 ?
-                            <>
-                            <Form.Item
-                              className="justify-center my-1"
-                              label={<p>{label}</p>}
-                            >
-                              <Input
-                                size={"middle"}
-                                type={InputType}
-                                style={{ width: "60%" }}
-                                placeholder={placeholder}
-                                disabled={disabled}
-                                value={placeholder}
-                                onChange={(e: any) => {
-                                  const inputValue = e.target.value;
-                                  setValue(inputValue);
-                                  itemChange && itemChange(inputValue);
-                                }}
-                              />
-                            </Form.Item>
-                            </>
-                            :
-                            <>
-                            <Form.Item
-                              className="justify-center my-1"
-                              label={<p>{label}</p>}
-                            >
-                              <Select
-                                mode="multiple"
-                                allowClear
-                                style={{ width: "60%" }}
-                                placeholder="select assignee"
-                                onChange={handleChange}
-                                options={options}
-                              />
-                            </Form.Item>
-                            </>
-                            }
-
+                            {id === 0 ? (
+                              <>
+                                <Form.Item
+                                  className="justify-center my-1"
+                                  label={<p>{label}</p>}
+                                >
+                                  <Input
+                                    size={"middle"}
+                                    type={InputType}
+                                    style={{ width: "60%" }}
+                                    placeholder={placeholder}
+                                    disabled={disabled}
+                                    value={placeholder}
+                                    onChange={(e: any) => {
+                                      const inputValue = e.target.value;
+                                      setValue(inputValue);
+                                      itemChange && itemChange(inputValue);
+                                    }}
+                                  />
+                                </Form.Item>
+                              </>
+                            ) : (
+                              <>
+                                <Form.Item
+                                  className="justify-center my-1"
+                                  label={<p>{label}</p>}
+                                >
+                                  <Select
+                                    mode="multiple"
+                                    allowClear
+                                    style={{ width: "60%" }}
+                                    placeholder="select assignee"
+                                    onChange={handleChange}
+                                    options={options}
+                                  />
+                                </Form.Item>
+                              </>
+                            )}
                           </>
                         );
                       }

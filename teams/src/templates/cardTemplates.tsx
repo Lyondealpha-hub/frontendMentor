@@ -18,10 +18,10 @@ content:string;
 // ];
 
 export const CardTemplates = ({title,content}:CardProps) => (
-  <><div className="overflow-hidden w-full">
+  <><div className=" w-full">
     <h1 className='text-4xl uppercase'>{title}</h1>
     <p>{content}</p>
-  </div>
-  </>
+    </div>
+</>
 );
 
