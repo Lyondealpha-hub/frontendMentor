@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 export const Timer = () => {
     const [starttime , setStarttime] = useState<string>('Display Time');
     const [endtime , setEndtime] = useState<string>('Display Time');
