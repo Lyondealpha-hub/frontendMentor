@@ -6,7 +6,6 @@ import InputTemplate from "./InputTemplate";
 import Datepicker from "./Datepicker";
 import tree from "../assets/hierarchical-structure.png";
 
-
 type TreeData = {
   title: React.ReactNode;
   key: string;
@@ -20,12 +19,11 @@ const App: React.FC = () => {
 
   const [TreeDataState, setTreeDataState] = useState<number>(0);
   const [display, setDisplay] = useState(true);
-  // const [inputValue, setInputValue] = useState<string>("");
   const [taskCount, setTaskCount] = useState(1);
   const [count, setCount] = useState<number>(0);
   const [treeData, setTreeData] = useState<TreeData[]>([
     {
-      title: count +1,
+      title: taskCount,
       key: "0-0",
       children: [
         {
@@ -33,7 +31,6 @@ const App: React.FC = () => {
             <div>
               <InputTemplate />
               {display ? <div>Task 1</div> : null}
-
             </div>
           ),
           key: "0-0-0",
@@ -46,18 +43,19 @@ const App: React.FC = () => {
     const newTreeData = [...treeData];
     const newTaskCount = taskCount + 1;
     const newCount = (e: any) => {
-      console.log("btn", e.currentTarget);
       setCount(count + 1);
     };
     newTreeData[0].children?.push({
       title: (
-        <div>
+        <div style={{ width: "100%" }}>
           <InputTemplate />
           <div>Task {newTaskCount}</div>
         </div>
       ),
       key: `0-0-${newTreeData[0].children?.length}`,
     });
+
+    newTreeData[0].title = newTaskCount;
 
     setTreeData(newTreeData);
     setTaskCount(newTaskCount);
@@ -98,9 +96,7 @@ const App: React.FC = () => {
           className="px-3"
         />
       </li>
-      <div className="flex justify-center mt-3">
-     
-    </div>
+      <div className="flex justify-center mt-3"></div>
     </div>
   );
 };

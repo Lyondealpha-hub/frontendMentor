@@ -10,10 +10,10 @@ const InputTemplate: React.FC = () => (
     onClick={addSubItem}
     placeholder="+ Add tasks"
     style={{
-      width: 200,
-      color: 'blue',
-      padding: '10px',
-
+    width: '150%',
+      color: 'blue', // sets the text color to blue
+      padding: '10px', // sets the padding to 10px
+      // add more styles as needed
     }}
   />
 );
