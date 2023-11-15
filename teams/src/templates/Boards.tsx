@@ -15,7 +15,7 @@ export const Boards = ({ title, headerColor, data }: props) => {
 
   return (
     <>
-      <div className="justify-center">
+      <div className="">
         <Card
           id={title}
           title={`${title}/ ${container.length}`}
@@ -23,12 +23,12 @@ export const Boards = ({ title, headerColor, data }: props) => {
           headStyle={{
             backgroundColor: `${headerColor}`,
             position: "fixed",
-            width: 300,
+            width: 350,
             zIndex: "5"
           }}
           bodyStyle={{ justifyContent:"center",paddingTop:"20%" }}
           style={{
-            width: 300,
+            width: 350,
             height: 500,
             backgroundColor: "gray",
             overflow: "auto",
