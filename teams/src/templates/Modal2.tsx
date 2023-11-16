@@ -166,11 +166,11 @@ const Modalx = ({
                         content={
                           <>
                           <hr />
-                          <ol className="ml-2">
+                          <ol className="ml-6">
                             {taskList.map(task => {
                               return (
                                 <>
-                                <li className="text-gray-600" key={task.key}>{task.name}</li>
+                                <a href=""><li className="text-gray-600 hover:text-blue-500 list-disc" key={task.key}>{task.name}</li></a>
                                 </>
                               )
                             })}
