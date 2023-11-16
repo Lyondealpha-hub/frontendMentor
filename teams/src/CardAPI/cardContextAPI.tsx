@@ -9,6 +9,7 @@ import React, {
 
 // import { Tree } from "antd";
 import type { TreeProps } from "antd/es/tree";
+import { TextArea } from "../templates/TextArea";
 
 // Define a type for your context
 type TreeData = {
@@ -16,8 +17,6 @@ type TreeData = {
   key: string;
   children?: TreeData[];
 };
-
-
 
 interface MyContextProps {
   headerTitle?: string;
@@ -31,8 +30,18 @@ interface MyContextProps {
   onSelect?: any;
   treeData?: any;
   showTextOrTextField?: boolean;
-  setShowTreeTemplate:any;
-  setShowTextOrTextField:any;
+  setShowTreeTemplate?: any;
+  setShowTextOrTextField?: any;
+  CardData?: any[];
+  container_new:any[];
+  container_start:any[];
+  container_progress:any[];
+  container_done:any[];
+  setContainer_new:any;
+  setContainer_start:any;
+  setContainer_progress:any;
+  setContainer_done:any;
+  board:any[]
 }
 
 // Create a context with an initial value
@@ -40,19 +49,50 @@ const MyContext = createContext<MyContextProps | undefined>(undefined);
 
 // Create a provider component
 export const MyProvider = ({ children }: any) => {
+ 
+  const [container_new, setContainer_new] = useState<any[]>([]);
+  const [container_start, setContainer_start] = useState<any[]>([]);
+  const [container_progress, setContainer_progress] = useState<any[]>([]);
+  const [container_done, setContainer_done] = useState<any[]>([]);
+  
+  const board = [
+    { title: "Create new Todo", headerColor: "red" , container:{container_new,setContainer_new}},
+    { title: "Start with", headerColor: "orange",container:{container_start,setContainer_start}},
+    { title: "In-Progress", headerColor: "blue",container:{container_progress,setContainer_progress}},
+    // { title: "Review", headerColor: "pink" },
+    { title: "Done", headerColor: "green",container:{container_done,setContainer_done}}
+  ];
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
   let [count, setCount] = useState<number>(1);
-  const [storyPoint, setStoryPoint] = useState("");
+
+  // const [storyPoint, setStoryPoint] = useState("");
+
   const onSelect: TreeProps["onSelect"] = (selectedKeys, info) => {
     console.log("selected", selectedKeys, info);
   };
 
-  const [disableTextArea, setDisableTextArea] = useState<boolean>(false);
+  const [disableTextArea, setDisableTextArea] = useState<boolean>(true);
 
   const [showTreeTemplate, setShowTreeTemplate] = useState(false);
 
   const [headerTitle, setheaderTitle] = useState<string>("header Title");
 
   const [showTextOrTextField, setShowTextOrTextField] = useState<boolean>(true);
+
+  // const [CardData, setCardData] = useState<any[]>([]);
 
   const addHeaderTitle = (e: ChangeEvent<HTMLInputElement>) => {
     setheaderTitle(e.target.value);
@@ -63,6 +103,27 @@ export const MyProvider = ({ children }: any) => {
       setShowTextOrTextField(false);
     }
   };
+  // const DisableTextarea = (event:any) => {
+  //   // if (event.key === "Enter") {
+
+  //     // event.preventDefault();
+  //     // toggleDisableTextarea();
+  //     setDisableTextArea(!disableTextArea)
+  //   }
+
+  const toggleDisableTextarea = (e:any ) => {
+    setDisableTextArea(!disableTextArea) 
+  };
+
+  const textareas  = (
+    <>
+      <TextArea
+        disable={disableTextArea}
+        toggleDisable={toggleDisableTextarea}
+      />
+      <div>Task {count}</div>
+    </>
+  )
 
   const [treeData, setTreeData] = useState<TreeData[]>([
     {
@@ -70,50 +131,29 @@ export const MyProvider = ({ children }: any) => {
       key: "0-0",
       children: [
         {
-          title: (
-            <>
-              <textarea
-                placeholder="Add story point"
-                // onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
-                //   setDetails(e.target.value)
-                // }
-                // onKeyDown={handleKeyDown}
-                style={{ border: "2px solid gray", padding: 5 }}
-              />
-              <div>Task {count}</div>
-            </>
-          ),
+          title: textareas,
           key: "0-0-0",
         },
       ],
     },
   ]);
-  const addStoryPoints = (event: MouseEvent<HTMLTextAreaElement>) => {
+
+  const addStoryPoints = async () => {
     const newTreeData = [...treeData];
-    const value = count += 1;
+    const value = (count += 1);
     newTreeData[0].children?.push({
-      title: (
-        <>
-          <textarea
-            // value={details}
-            disabled={disableTextArea}
-            style={{ border: "2px solid gray", padding: 5 }}
-            placeholder="Add story point"
-          />
-          <div>Task {count}</div>
-        </>
-      ),
+      title: textareas,
       key: `0-0-${newTreeData[0].children?.length}`,
     });
     newTreeData[0].title = count;
     setTreeData(newTreeData);
     setCount(value);
-    setDisableTextArea(true);
+    console.log(newTreeData[0]);
   };
 
   const contextValue: MyContextProps = {
     headerTitle,
-    storyPoint,
+    // storyPoint,
     count,
     showTreeTemplate,
     disableTextArea,
@@ -124,7 +164,17 @@ export const MyProvider = ({ children }: any) => {
     treeData,
     showTextOrTextField,
     setShowTextOrTextField,
-    setShowTreeTemplate
+    setShowTreeTemplate,
+    // CardData,
+    container_new,
+    container_start,
+    container_progress,
+    container_done,
+    setContainer_new,
+    setContainer_start,
+    setContainer_progress,
+    setContainer_done,
+    board
   };
 
   return (

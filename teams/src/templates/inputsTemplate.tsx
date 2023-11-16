@@ -28,9 +28,6 @@ export const InputsTemplate = ({ label, InputType, placeholder, disabled = true,
                 />
 
             </Form.Item>
-
-
-
         </div>
     )
 }

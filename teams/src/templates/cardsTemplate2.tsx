@@ -1,20 +1,16 @@
-// import React, {
-//   useState,
-//   ChangeEvent,
-//   KeyboardEvent,
-//   MouseEventHandler,
-// } from "react";
 import TreeTemplate from "./TreeTemplate";
 import { EllipsisOutlined, EditOutlined } from "@ant-design/icons";
 import { Card, Input } from "antd";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { useMyContext } from "../CardAPI/cardContextAPI";
-// import { title } from "process";
+import { useState } from "react";
 
 const { Meta } = Card;
-
-export const Cards: React.FC = () => {
-  const {
+type props={
+  title?:string;
+}
+export const Cards=({title}:props) => {
+   const{
     headerTitle,
     addHeaderTitle,
     showTextOrTextField,
@@ -22,23 +18,13 @@ export const Cards: React.FC = () => {
     toggleTitleAndTextField,
     setShowTextOrTextField,
     setShowTreeTemplate,
+    container_new,
+    container_start,
+    setContainer_new,
+    setContainer_start,
+    board
   } = useMyContext();
-
-  // const [showTreeTemplate, setShowTreeTemplate] = useState(false);
-
-  // const [Title, setTitle] = useState<string>("header Title");
-  // const [showTextOrTextField, setShowTextOrTextField] = useState<boolean>(true);
-
-  // const addHeaderTitle = (e: ChangeEvent<HTMLInputElement>) => {
-  //   setTitle(e.target.value);
-  // };
-
-  // const toggleTitleAndTextField = (event: KeyboardEvent<HTMLInputElement>) => {
-  //   if (event.key === "Enter" ) {
-  //     setShowTextOrTextField(false);
-  //   }
-  // };
-
+let [count,setCount] = useState<number>(1)
   return (
     <Card
       style={{
@@ -54,8 +40,12 @@ export const Cards: React.FC = () => {
       ]}
     >
       <div className="flex justify-between">
-        <LeftOutlined />
-        <RightOutlined />
+        <LeftOutlined onClick={()=>{}}/>
+        <RightOutlined  onClick={async (e: any) => {
+                    board[count].title && board[count].container.push([...container_start, <Cards />])
+                    alert(board[count].title);
+                    // setCount(count++)
+                  }}/>
       </div>
       <Meta title="" />
       <br />
@@ -88,3 +78,4 @@ export const Cards: React.FC = () => {
     </Card>
   );
 };
+
