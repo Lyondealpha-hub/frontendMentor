@@ -10,7 +10,7 @@ import {
   Popover,
 } from "antd";
 import type { SelectProps } from "antd";
-import { BellOutlined } from "@ant-design/icons";
+import { NotificationsActiveOutlined } from "@mui/icons-material";
 
 type incomingData = {
   id: string;
@@ -122,6 +122,12 @@ const Modalx = ({
   const [Open, setOpen] = useState(false);
   const [task, setTask] = useState<any[]>([]);
 
+    const taskList = [
+      { key: 0, name: 'Fix form', desc: 'Fix the PPE form'},
+      { key: 1, name: 'Fix Button', desc: 'Fix the request button'},
+      { key: 2, name: 'Work on modal', desc: 'build the modal'},
+    ];
+
   // const hide = () => {
   //   setOpen(false);
   // };
@@ -129,15 +135,6 @@ const Modalx = ({
   const handleOpenChange = (newOpen: any) => {
     setOpen(newOpen);
   };
-
-  const contentList = (
-    <div>
-      <p>
-        Dev details
-        {/* {content} */}
-      </p>
-    </div>
-  );
 
   return (
     <>
@@ -168,7 +165,16 @@ const Modalx = ({
                       <Popover
                         content={
                           <>
-                            {contentList}
+                          <hr />
+                          <ol className="ml-2">
+                            {taskList.map(task => {
+                              return (
+                                <>
+                                <li className="text-gray-600" key={task.key}>{task.name}</li>
+                                </>
+                              )
+                            })}
+                          </ol>
                             {/* <a onClick={hide}>Close</a> */}
                           </>
                         }
@@ -197,12 +203,14 @@ const Modalx = ({
                                 <span className="flex self-start items-center space-x-2 rounded-xl bg-stone-100 px-2 cursor-pointer hover:bg-stone-200 ">
                                   <p className="rounded-full animate-ping bg-red-500 w-1 h-1"></p>
                                   <p className="text-blue-500 font-bold text-sm pr-1">
-                                    Jesse
+                                    Swae
                                   </p>
                                 </span>
                                 <div className="flex">
-                                  <BellOutlined className="font-bold text-red-500 text-base" />
-                                  <p className="text-gray-600 font-medium">{task.length}</p>
+                                  <NotificationsActiveOutlined className="font-semibold text-red-500 text-sm" />
+                                  <p className="text-gray-600 font-medium">
+                                    {task.length}
+                                  </p>
                                 </div>
                               </div>
                             </article>
