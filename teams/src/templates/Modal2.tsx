@@ -13,6 +13,7 @@ import {
 } from "antd";
 import { spawn } from "child_process";
 import type { SelectProps } from "antd";
+import { BellOutlined } from "@ant-design/icons";
 
 type incomingData = {
   id: string;
@@ -122,7 +123,7 @@ const Modalx = ({
 }: props) => {
   const [value, setValue] = useState<string | number>();
   const [Open, setOpen] = useState(false);
-  const [isCar, setisCar] = useState(false);
+  const [task, setTask] = useState<any[]>([]);
 
   // const hide = () => {
   //   setOpen(false);
@@ -136,7 +137,7 @@ const Modalx = ({
     <div>
       <p>
         Dev details
-      {/* {content} */}
+        {/* {content} */}
       </p>
     </div>
   );
@@ -176,11 +177,13 @@ const Modalx = ({
                         }
                         title={item.title}
                         trigger="click"
-                        onOpenChange={async (e: any) => {item.id && setOpen(true);}}
+                        onOpenChange={async (e: any) => {
+                          item.id && setOpen(true);
+                        }}
                         placement="topRight"
                       >
                         <List.Item.Meta
-                        className="ml-4"
+                          className="ml-4"
                           avatar={
                             <Avatar
                               src={item.img}
@@ -193,12 +196,18 @@ const Modalx = ({
                               <p className="text-slate-600 font-semibold">
                                 {item.description}
                               </p>
-                              <span className="flex self-start items-center space-x-2 rounded-xl bg-stone-100 px-2 cursor-pointer hover:bg-stone-200 ">
-                                <p className="rounded-full animate-ping bg-cyan-800 w-1 h-1"></p>
-                                <p className="text-blue-500 font-bold text-sm pr-1">
-                                  Jesse
-                                </p>
-                              </span>
+                              <div className="flex flex-row space-x-2">
+                                <span className="flex self-start items-center space-x-2 rounded-xl bg-stone-100 px-2 cursor-pointer hover:bg-stone-200 ">
+                                  <p className="rounded-full animate-ping bg-red-500 w-1 h-1"></p>
+                                  <p className="text-blue-500 font-bold text-sm pr-1">
+                                    Jesse
+                                  </p>
+                                </span>
+                                <div className="flex">
+                                  <BellOutlined className="font-bold text-red-500 text-base" />
+                                  <p className="text-gray-600 font-medium">{task.length}</p>
+                                </div>
+                              </div>
                             </article>
                           }
                         />
