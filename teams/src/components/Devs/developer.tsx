@@ -1,5 +1,6 @@
 import { Boards } from "../../templates/Boards";
 import { CardS } from "../../templates/Card";
+import { Timer } from "../../templates/Timer";
 import { CardTemplates } from "../../templates/cardTemplates";
 
 interface props {}
@@ -15,18 +16,21 @@ export const Developers: React.FC<props> = () => {
     <div >
       <div >
         <div>
-          <div className="flex justify-between py-5 px-5">
-            <div>
+          <div className="flex justify-between py-5 px-5 ">
+            <div className="w-[60%]">
               <CardTemplates content="Task Assignment" title="FrontEnd" />
             </div>
-            <div className="w-[25%]">
+            <div className='w-[100%] '>
+            <Timer/>
+            </div>
+            <div className="w-[20%]">
               <CardS />
             </div>
           </div>
         </div>
 
         <hr />
-        <div className="grid grid-cols-4 gap-2 p-8">
+        <div className="grid p-2 mx justify-center grid-cols-4">
           {data.map(({ title, headerColor }, id) => (
             <Boards
               key={id}
