@@ -34,6 +34,29 @@ export const Dashboard = () => {
     { id: 1, label: "", title: "Back-End Teams", image: "", desc: "" },
   ]
 
+    const [states, setstates] = useState<any>({
+        name : "Team",
+        email: 'adfasdf@sgf',
+        pass : "afasdjfhsaodhbksjd"
+    });
+
+
+    const { name , email, pass} = states;
+
+
+    const PercyVal = (e:any)=>{
+        if(name == "" || name.length < 5){
+            alert("aaawrong n")
+        }
+        else if (email == "" || email.length < 7){
+            alert("Wrong name")
+        }
+        else{
+            alert("Try again")
+        }
+    }
+
+
   return (
     <main className="w-full h-full justify-center ">
       <div className="w-full h-full">
@@ -102,6 +125,8 @@ export const Dashboard = () => {
                 </span>
               </button>
               <NewButton btnName={'New Assignment Task'} handleNew={() => { setIsModalOpen(true)}} />
+
+              <button onClick={PercyVal}>Percy</button>
 
             </div>
 
