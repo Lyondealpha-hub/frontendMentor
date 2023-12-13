@@ -18,3 +18,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.bg-myimage{
+  background-image: url('assets/student3.jpg');
+  /* background-size:cover;
+  background-repeat: no-repeat;
+  background-size: contain; */
+  background-position: center;
+ 
+  /* border:2px solid red; */
+  /* width:100%; */
+  height:500px;
+  
+}
