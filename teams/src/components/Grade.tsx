@@ -5,7 +5,7 @@ const Directory = () => {
   
      
       <>
-         {/* <Navbar/> */}
+         <Navbar/>
     
   
             <h1> Contact US</h1 >
