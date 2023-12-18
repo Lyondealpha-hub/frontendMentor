@@ -1,6 +1,6 @@
 import Navbar from "./Nav";
 
-const Directory = () => {
+const Grade = () => {
     return ( 
   
      
@@ -8,7 +8,7 @@ const Directory = () => {
          <Navbar/>
     
   
-            <h1> Contact US</h1 >
+            <h1> Contact US ygyiuo</h1 >
   
       </>
     
@@ -19,4 +19,4 @@ const Directory = () => {
    
   };
   
-  export default Directory;
+  export default Grade;

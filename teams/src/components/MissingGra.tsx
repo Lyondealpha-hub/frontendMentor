@@ -2,7 +2,7 @@ import Navbar from "./Nav";
 
 export const Integration = () => {
     return (<>
-    /* <Navbar/> */
+   <Navbar/> 
     <h1>Home</h1>
     <main>
         

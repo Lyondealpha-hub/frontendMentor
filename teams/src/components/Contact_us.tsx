@@ -1,61 +1,43 @@
 import Navbar from "./Nav";
-import Student from "../components/student3.jpg";
-import image from "../assets/images.jpg";
-import Dashboard from "../assets/database-storage (1).png";
-import report from "../assets/report.png";
-import support from "../assets/support.png";
+import school from "../assets/contact.jpg";
+
+export const Contact_us = () => {
+    return (<>
+    <Navbar/>
+    
+    <main>
 
 
-const Home = () => {
-    return ( 
-  
-     
-      <>
-      <Navbar />
-        <div className="w-[100%] h-[50%] bg-myimage flex"></div>
-        <div className="w-[100%]   flex mt-[5px]">
-            <div className="align-center mt-10 w-[60%] m-12">
-
-                <h1 className="text-[50px] text-blue-700 ">How To Find Missing Grades Reports</h1>
-                <h1 className="text-[20px]">Dealing with incomplete grades during the storage process can be a time-consuming and frustrating task. 
-                It often involves reviewing each report card, contacting specific teachers, updating grades,
-                and then repeating the entire process of storing grades and generating report cards.
-                Imagine a more efficient solution - a method to ensure all grades are complete before the storage process begins. Introducing 
-                our Missing Grades Report, a feature that streamlines this workflow. This report identifies students without final term grades, 
-                allowing administrative staff to promptly notify teachers of the specific missing grades. By utilizing this tool, you can save valuable
-                time and streamline the grading and reporting process.</h1>
-            </div>
-
-            <div className="w-[40%]">
-                <img className="w-[70%] border-solid mt-[70px]" src={image} alt="logo"/>
-            </div>
-                
+<div className="py-16 bg-yellow-200 h-full z-10">
+    <div className="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl w-[100%]">
+        <div className="hidden lg:block w-full bg-cover"><img className=" h-full w-[full]" src={school} alt="student"/>
+        
         </div>
-        <div className="flex w-[100%] mt-2">
-            <div className="flex flex-col bg-white rounded-lg shadow -md w-full m-6 overflow-hidden hover:transition ease-in-out delay-150 cursor-pointer">
-                <img className="h-20 w-[90px] m-auto mt-10" src={Dashboard}/>
-             
-                <h2 className="text-center px-2 pb-5 font-bold text-[20px]"> Database Support </h2>
-                <a href="#" className="bg-blue-500 text-white p-3 text-center hover:text-sky-400 text-[16px]">Read More</a>
-
+        <div className="w-full p-8 lg:w-1/2">
+            <h2 className="text-[40px] font-bold text-gray-700 text-center">Contact </h2>
+            <p className="text-xl text-gray-600 text-center">Get in Touch</p>
+            
+            
+            <div className="mt-4 w-[300px]">
+                <label className="block text-gray-700 text-sm font-bold mb-2">Full Name</label>
+                <input className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none" type="text" />
             </div>
-            <div className="flex flex-col bg-white rounded-lg shadow -md w-full m-6 overflow-hidden cursor-pointer">
-                <img className="h-20 w-[90px] m-auto" src={report}/>
-             
-                <h2 className="text-center px-2 pb-5 font-bold text-[20px]"> Report Grade </h2>
-                <a href="#" className="bg-blue-500 text-white p-3 text-center hover:text-sky-400 text-[16px]">Read More</a>
-
+            <div className="mt-4">
+                <label className="block text-gray-700 text-sm font-bold mb-2">Email Address</label>
+                <input className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none" type="email" />
             </div>
-            <div className="flex flex-col bg-white rounded-lg shadow -md w-full m-6 overflow-hidden cursor-pointer">
-                <img className="h-20 w-[90px] m-auto" src={support}/>
-             
-                <h2 className="text-center px-2 pb-5 font-bold text-[20px]"> Support </h2>
-                <a href="#" className="bg-blue-500 text-white p-3 text-center hover:text-sky-400 text-[16px]">Read More</a>
-
+            <div className="mt-4">
+                <label className="block text-gray-700 text-sm font-bold mb-2">Message</label>
+                <textarea className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none" />
             </div>
+            <div className="mt-8">
+                <button className="bg-gray-700 text-white font-bold py-2 px-4 w-full rounded hover:bg-gray-600">Send</button>
+            </div>
+            
         </div>
-
-        <footer className="bg-sky-400">
+    </div>
+</div>
+   <footer className="bg-sky-400">
     <div className="mx-auto max-w-7xl py-8 px-2 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
       <nav className="-mx-5 -my-2 flex flex-wrap justify-center order-2" aria-label="Footer">
         <ul className="flex items-center flex-wrap mb-3 md:mb-0">
@@ -63,7 +45,7 @@ const Home = () => {
               </li>
               <li><a href="#" className="text-sm font-normal text-gray-500 hover:underline mr-4 md:mr-6">Missing Grade</a></li>
               <li><a href="#" className="text-sm font-normal text-gray-500 hover:underline mr-4 md:mr-6">Grade Report</a></li>
-              <li><a href="/Contact_us" className="text-sm font-normal text-gray-500 hover:underline mr-4 md:mr-6">Contact</a></li>
+              <li><a href="#" className="text-sm font-normal text-gray-500 hover:underline mr-4 md:mr-6">Contact</a></li>
               <li><a href="#" className="text-sm font-normal text-gray-500 hover:underline">Help</a></li>
         </ul>
       </nav>
@@ -101,7 +83,12 @@ const Home = () => {
         </div>
     </div>
 </footer>
-        </>
-    )
-};
-  export default Home;
+      
+
+   
+        
+    </main>
+    </>);
+  };
+  export default Contact_us;
+  
