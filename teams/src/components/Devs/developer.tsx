@@ -1,8 +1,10 @@
+import { ZodObject, z } from "zod";
 import { useMyContext } from "../../CardAPI/cardContextAPI";
 import { Boards } from "../../templates/Boards";
 import { CardS } from "../../templates/Card";
 import { Timer } from "../../templates/Timer";
 import { CardTemplates } from "../../templates/cardTemplates";
+import Home from "../demo";
 
 interface props {}
 export const Developers: React.FC<props> = () => {
@@ -42,10 +44,13 @@ export const Developers: React.FC<props> = () => {
               container={container}
             />
           ))} */}
-          <Boards title={board[0].title} headerColor={board[0].headerColor} data={[]} container={board[0].container}/>
+          {/* <Boards title={board[0].title} headerColor={board[0].headerColor} data={[]} container={board[0].container}/>
           <Boards title={board[1].title} headerColor={board[1].headerColor} data={[]} container={board[1].container}/>
           <Boards title={board[2].title} headerColor={board[2].headerColor} data={[]} container={board[2].container}/>
-          <Boards title={board[3].title} headerColor={board[3].headerColor} data={[]} container={board[3].container}/>
+          <Boards title={board[3].title} headerColor={board[3].headerColor} data={[]} container={board[3].container}/> */}
+
+
+
         </div>
       </div>
     </div>

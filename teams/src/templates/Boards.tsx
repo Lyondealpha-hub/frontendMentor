@@ -6,10 +6,10 @@ import { useMyContext } from "../CardAPI/cardContextAPI";
 // import { HoverStyle } from "devextreme-react/chart";
 
 interface props {
-  title: string;
-  headerColor: string;
-  data: any[];
-  container:any;
+  title?: string;
+  headerColor?: string;
+  data?: any[];
+  container?:any;
 }
 
 export const Boards = ({ title, headerColor, data,container}: props) => {

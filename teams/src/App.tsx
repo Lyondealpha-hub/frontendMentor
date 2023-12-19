@@ -1,18 +1,21 @@
-
-
 import "devextreme/dist/css/dx.light.css";
 import MyRoutes from './routers';
 import { MyProvider } from "./CardAPI/cardContextAPI";
+import Home from "./components/demo";
+
 
 const App = () => {
-  
   return (
-    <MyProvider>
+    
+    <>
+     <MyProvider>
     <div className="w-full h-full bg-gray-300 ">
       <MyRoutes />
     </div>
-    </MyProvider>
+   </MyProvider>
 
-)};
+    </>
+  );
+};
 
 export default App;
