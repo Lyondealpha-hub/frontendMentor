@@ -10,15 +10,15 @@ export const Contact_us = () => {
 
 <div className="py-16 bg-yellow-200 h-full z-10">
     <div className="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl w-[100%]">
-        <div className="hidden lg:block w-full bg-cover"><img className=" h-full w-[full]" src={school} alt="student"/>
+        <div className="hidden lg:block  bg-cover "><img className=" h-full" src={school} alt="student"/>
         
         </div>
-        <div className="w-full p-8 lg:w-1/2">
+        <div className=" p-8 lg:w-[60%]">
             <h2 className="text-[40px] font-bold text-gray-700 text-center">Contact </h2>
             <p className="text-xl text-gray-600 text-center">Get in Touch</p>
             
             
-            <div className="mt-4 w-[300px]">
+            <div className="mt-4">
                 <label className="block text-gray-700 text-sm font-bold mb-2">Full Name</label>
                 <input className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none" type="text" />
             </div>
