@@ -6,12 +6,13 @@ import { CardTemplates } from "../../templates/cardTemplates";
 interface props {}
 export const Developers: React.FC<props> = () => {
   const data = [
-    { title: "Create new Todo", headerColor: "red" },
-    { title: "Start with", headerColor: "orange" },
-    { title: "In-Progress", headerColor: "blue" },
+    { id:1,title: "Create new Todo", headerColor: "red" },
+    { id:2,title: "Start with", headerColor: "orange" },
+    { id:3,title: "In-Progress", headerColor: "blue" },
     // { title: "Review", headerColor: "pink" },
-    { title: "Done", headerColor: "green" }
+    { id:4,title: "Done", headerColor: "green" }
   ];
+
   return (
     <div >
       <div >
@@ -31,7 +32,7 @@ export const Developers: React.FC<props> = () => {
 
         <hr />
         <div className="grid p-2 mx justify-center grid-cols-4">
-          {data.map(({ title, headerColor }, id) => (
+          {data.map(({ title, headerColor, id }) => (
             <Boards
               key={id}
               title={title}
@@ -44,3 +45,7 @@ export const Developers: React.FC<props> = () => {
     </div>
   );
 };
+function added(array: any, arg1: number, arg2: number) {
+  throw new Error("Function not implemented.");
+}
+

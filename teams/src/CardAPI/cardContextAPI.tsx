@@ -75,7 +75,7 @@ export const MyProvider = ({ children }: any) => {
               <textarea
                 placeholder="Add story point"
                 style={{ width: "auto" }} className="flex justify- mt-3 items-start "
-                
+
                 // onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
                 //   setDetails(e.target.value)
                 // }
@@ -100,7 +100,7 @@ export const MyProvider = ({ children }: any) => {
             // value={details}
             disabled={disableTextArea}
             style={{ width: "100%" }}
-            
+
             className="flex justify- mt-3 items-start "
             placeholder="Add story point"
           />

@@ -9,6 +9,7 @@ import { EllipsisOutlined, EditOutlined } from "@ant-design/icons";
 import { Card, Input } from "antd";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { useMyContext } from "../CardAPI/cardContextAPI";
+import { useState } from "react";
 // import { title } from "process";
 
 const { Meta } = Card;
@@ -24,20 +25,17 @@ export const Cards: React.FC = () => {
     setShowTreeTemplate,
   } = useMyContext();
 
-  // const [showTreeTemplate, setShowTreeTemplate] = useState(false);
+  const [position, setPosition] = useState(0);
 
-  // const [Title, setTitle] = useState<string>("header Title");
-  // const [showTextOrTextField, setShowTextOrTextField] = useState<boolean>(true);
+  const handleMoveLeft = () => {
+    setPosition(position => Math.max(0, position - 1));
+  };
 
-  // const addHeaderTitle = (e: ChangeEvent<HTMLInputElement>) => {
-  //   setTitle(e.target.value);
-  // };
+  const handleMoveRight = () => {
+    console.log("move right");
+  };
 
-  // const toggleTitleAndTextField = (event: KeyboardEvent<HTMLInputElement>) => {
-  //   if (event.key === "Enter" ) {
-  //     setShowTextOrTextField(false);
-  //   }
-  // };
+
 
   return (
     <Card
@@ -54,8 +52,8 @@ export const Cards: React.FC = () => {
       ]}
     >
       <div className="flex justify-between">
-        <LeftOutlined />
-        <RightOutlined />
+        <LeftOutlined onClick={()=>handleMoveLeft()}/>
+        <RightOutlined onClick={()=>handleMoveRight()}/>
       </div>
       <Meta title="" />
       <br />
