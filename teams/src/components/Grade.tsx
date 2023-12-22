@@ -8,7 +8,7 @@ const Grade = () => {
          <Navbar/>
     
   
-            <h1> Contact US ygyiuo</h1 >
+            <h1> Contact US </h1 >
   
       </>
     

@@ -36,21 +36,21 @@ const Home = () => {
                 <img className="h-20 w-[90px] m-auto mt-10" src={Dashboard}/>
              
                 <h2 className="text-center px-2 pb-5 font-bold text-[20px]"> Database Support </h2>
-                <a href="#" className="bg-blue-500 text-white p-3 text-center hover:text-sky-400 text-[16px]">Read More</a>
+                <a href="#" className="bg-blue-500 text-white p-3 text-center hover:text-black text-[16px]">Read More</a>
 
             </div>
             <div className="flex flex-col bg-white rounded-lg shadow -md w-full m-6 overflow-hidden cursor-pointer">
                 <img className="h-20 w-[90px] m-auto" src={report}/>
              
                 <h2 className="text-center px-2 pb-5 font-bold text-[20px]"> Report Grade </h2>
-                <a href="#" className="bg-blue-500 text-white p-3 text-center hover:text-sky-400 text-[16px]">Read More</a>
+                <a href="#" className="bg-blue-500 text-white p-3 text-center hover:text-black text-[16px]">Read More</a>
 
             </div>
             <div className="flex flex-col bg-white rounded-lg shadow -md w-full m-6 overflow-hidden cursor-pointer">
                 <img className="h-20 w-[90px] m-auto" src={support}/>
              
                 <h2 className="text-center px-2 pb-5 font-bold text-[20px]"> Support </h2>
-                <a href="#" className="bg-blue-500 text-white p-3 text-center hover:text-sky-400 text-[16px]">Read More</a>
+                <a href="#" className="bg-blue-500 text-white p-3 text-center hover:text-black text-[16px]">Read More</a>
 
             </div>
         </div>
