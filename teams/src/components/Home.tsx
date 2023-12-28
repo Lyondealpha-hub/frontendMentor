@@ -7,6 +7,18 @@ import support from "../assets/support.png";
 
 
 const Home = () => {
+ const homePage=[
+    {id:0, homeIndex:"0", h2Style:"text-center px-2 pb-5 font-bold text-[20px]" , h2:"Database Support", aStyle:"bg-blue-500 text-white p-3 text-center hover:text-black text-[16px]", a:"Read More"},
+    // {id:1, homeIndex:"1",h2Style:"text-center px-2 pb-5 font-bold text-[20px]" , h2:"Report Grade", aStyle:"bg-blue-500 text-white p-3 text-center hover:text-black text-[16px]", a:"Read More"},
+    // {id:2, homeIndex:"2",h2Style:"text-center px-2 pb-5 font-bold text-[20px]" , h2:"Support", aStyle:"bg-blue-500 text-white p-3 text-center hover:text-black text-[16px]", a:"Read More"}
+
+
+
+]
+
+
+
+
     return ( 
   
      
@@ -31,14 +43,40 @@ const Home = () => {
             </div>
                 
         </div>
+
         <div className="flex w-[100%] mt-2">
-            <div className="flex flex-col bg-white rounded-lg shadow -md w-full m-6 overflow-hidden hover:transition ease-in-out delay-150 cursor-pointer">
+         <div className="flex flex-col bg-white rounded-lg shadow -md w-full m-6 overflow-hidden hover:transition ease-in-out delay-150 cursor-pointer">
                 <img className="h-20 w-[90px] m-auto mt-10" src={Dashboard}/>
              
-                <h2 className="text-center px-2 pb-5 font-bold text-[20px]"> Database Support </h2>
-                <a href="#" className="bg-blue-500 text-white p-3 text-center hover:text-black text-[16px]">Read More</a>
+                
 
             </div>
+
+
+         {homePage.map((homePages)=>(
+
+          <div>
+
+             <h2 className={homePages.h2Style}>{homePages.h2} </h2>
+                <a href="#" className={homePages.aStyle}>{homePages.a}</a>
+
+
+          </div>
+          
+        )
+        )}
+        </div>
+
+
+        
+        {/* <div className="flex w-[100%] mt-2">
+            {/* <div className="flex flex-col bg-white rounded-lg shadow -md w-full m-6 overflow-hidden hover:transition ease-in-out delay-150 cursor-pointer">
+                <img className="h-20 w-[90px] m-auto mt-10" src={Dashboard}/>
+             
+                {/* <h2 className="text-center px-2 pb-5 font-bold text-[20px]"> Database Support </h2>
+                <a href="#" className="bg-blue-500 text-white p-3 text-center hover:text-black text-[16px]">Read More</a> 
+
+            </div> 
             <div className="flex flex-col bg-white rounded-lg shadow -md w-full m-6 overflow-hidden cursor-pointer">
                 <img className="h-20 w-[90px] m-auto" src={report}/>
              
@@ -53,7 +91,7 @@ const Home = () => {
                 <a href="#" className="bg-blue-500 text-white p-3 text-center hover:text-black text-[16px]">Read More</a>
 
             </div>
-        </div>
+        </div> */}
 
         <footer className="bg-sky-400">
     <div className="mx-auto max-w-7xl py-8 px-2 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
